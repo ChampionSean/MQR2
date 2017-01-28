@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+                           http://www.springframework.org/schema/security
+                           http://www.springframework.org/schema/security/spring-security-4.1.xsd">
+    
+    
+     <!-- Se especifica la ruta del archivo que tendra los datos de la conexión a la BD,
+         en este caso el archivo se llama database.properties y se encuentra dentro de 
+         la carpeta WEB-INF -->
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+        p:location="/WEB-INF/database.properties"/>
+
+    <!--  Bean que realiza la conexión a la BD usando la informacion de database.properties-->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+        p:driverClassName="${jdbc.driverClassName}"
+        p:url="${jdbc.url}"
+        p:username="${jdbc.username}"
+        p:password="${jdbc.password}"/>
+    
+    <bean id="hibernate4AnnotatedSessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="annotatedClasses">
+            <list>
+                <value>MapeoBD.Cliente</value>        
+                <value>MapeoBD.Proyecto</value>        
+                <value>MapeoBD.Empleado</value>  
+                <value>MapeoBD.Empleado_proyecto</value>  
+                <value>MapeoBD.Password_token</value>  
+                <value>MapeoBD.Pregunta</value> 
+                <value>MapeoBD.Prueba</value>   
+                <value>MapeoBD.Respuesta</value>  
+                <value>MapeoBD.Prueba_Proyecto</value>
+                <value>MapeoBD.Usuario</value>
+                <value>MapeoBD.Pregunta_respuesta</value>
+                <value>MapeoBD.Respuesta_empleado</value> 
+                <value>MapeoBD.Persona</value>
+                <value>MapeoBD.Prueba_Cliente</value>
+                <value>MapeoBD.Pregunta_prueba</value>
+                <value>MapeoBD.Prueba_empleado</value>
+                <value>MapeoBD.Comentario</value>
+            </list>
+        </property>    
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
+                <prop key="hibernate.show_sql">false</prop>
+                <prop key="hibernate.format_sql">false</prop>
+            </props>
+        </property>
+    </bean>
+    
+    <!--  Se agrega para poder inyectarlo a los Controladores, revisa EjemploController.java
+          en el paquete controlador, se esta haciendo uso de @Autowiring-->
+   
+    <bean id="ClienteDAO" class="modelo.ClienteDAO"
+        p:sessionFactory-ref="hibernate4AnnotatedSessionFactory"
+    />
+    <bean id="ProyectoDAO" class="modelo.ProyectoDAO"
+        p:sessionFactory-ref="hibernate4AnnotatedSessionFactory"
+    />
+    <bean id="EmpleadoDAO" class="modelo.EmpleadoDAO"
+        p:sessionFactory-ref="hibernate4AnnotatedSessionFactory"
+    />
+    
+    <bean id="Empleado_proyectoDAO" class="modelo.Empleado_proyectoDAO"
+        p:sessionFactory-ref="hibernate4AnnotatedSessionFactory"
+    />
+    
+    <bean id="Password_tokenDAO" class="modelo.Password_tokenDAO"
+        p:sessionFactory-ref="hibernate4AnnotatedSessionFactory"
+    />
+    
+    <bean id="PreguntaDAO" class="modelo.PreguntaDAO"
+        p:sessionFactory-ref="hibernate4AnnotatedSessionFactory"
+    />
+    
+    <bean id="PruebaDAO" class="modelo.PruebaDAO"
+        p:sessionFactory-ref="hibernate4AnnotatedSessionFactory"
+    />
+    
+    <bean id="RespuestaDAO" class="modelo.RespuestaDAO"
+        p:sessionFactory-ref="hibernate4AnnotatedSessionFactory"
+    />
+    
+     <bean id="UsuarioDAO" class="modelo.UsuarioDAO"
+        p:sessionFactory-ref="hibernate4AnnotatedSessionFactory"
+    />
+      <bean id="RestablecerPasswordDAOImpl" class="modelo.RestablecerPasswordDAOImpl"
+        p:sessionFactory-ref="hibernate4AnnotatedSessionFactory"
+    />
+     <bean id="ComentarioDAO" class="modelo.ComentarioDAO"
+        p:sessionFactory-ref="hibernate4AnnotatedSessionFactory"
+    />
+     <bean id="Respuesta_empleadoDAO" class="modelo.Respuesta_empleadoDAO"
+        p:sessionFactory-ref="hibernate4AnnotatedSessionFactory"
+    />
+    <!-- SpringSecurity -->
+
+    <security:http pattern="/css/*" security="none"/>
+    <security:http pattern="/imagenes/*" security="none"/>
+    <security:http pattern="/js/*" security="none"/>
+    <security:http auto-config='true'>
+        <security:intercept-url pattern="/" access="permitAll" />
+        <security:intercept-url pattern="/administrador/*" access="hasAuthority('ROLE_ADMIN')" />
+        <security:intercept-url pattern="/cliente/*" access="hasAuthority('ROLE_CLIENTE')" />
+        <security:intercept-url pattern="/empleado/*" access="hasAuthority('ROLE_EMPLEADO')" />
+        <!-- <security:intercept-url pattern="/**" access="hasAnyRole('ROLE_ADMINISTRADOR','ROLE_CLIENTE','ROLE_EMPLEADO')" /> -->
+        <security:form-login login-page="/"
+                             authentication-failure-url="/error403"
+                             default-target-url="/home"
+                             always-use-default-target="true"/>
+        <security:csrf disabled="true"/>
+        <security:access-denied-handler error-page="/error403" />
+        <security:logout logout-success-url="/"
+                         delete-cookies="JSESSIONID"/>
+        
+    </security:http>
+    <security:authentication-manager>
+        <security:authentication-provider>
+            <security:password-encoder hash="md5" />
+            <security:jdbc-user-service data-source-ref="dataSource" 
+             users-by-username-query= "select correo, password_usuario, 1
+                                        from persona inner join usuario 
+                                                ON (persona.usuario_id = usuario.id_usuario
+                                        AND persona.correo=?)"
+             authorities-by-username-query="select correo, rol_usuario 
+                                                from persona inner join usuario 
+                                                ON (persona.usuario_id = usuario.id_usuario
+                                                  AND persona.correo=?);"
+            />
+        </security:authentication-provider>
+    </security:authentication-manager>
+    
+</beans>
