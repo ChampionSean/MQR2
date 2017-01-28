@@ -269,7 +269,7 @@ public String crearEmpleado(HttpServletRequest a){
        }
        Empleado e=new Empleado();
        
-       e.setDireccion(request.getParameter("direccion"));
+       e.setDireccion("");
        e.setHoras_x_semana(0);
        e.setCarrera(request.getParameter("carrera"));
        e.setEstado_civil(request.getParameter("estado_civil"));
@@ -278,8 +278,8 @@ public String crearEmpleado(HttpServletRequest a){
        e.setAntiguedad("");
        e.setSueldo_mensual(request.getParameter("sueldo_mensual"));
        e.setSexo(request.getParameter("sexo"));
-       
-       e.setHabilitado(Integer.parseInt(request.getParameter("candidato")));
+       e.setCandidato(request.getParameter("candidato"));
+       e.setHabilitado(1);
        e.setArea(request.getParameter("area"));
        e.setNombre_empresa(request.getParameter("Nombre_Empresa"));
        e.setPuesto(request.getParameter("Puesto"));

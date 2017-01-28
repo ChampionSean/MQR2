@@ -62,17 +62,9 @@
 			</div>
 		</form>
 		<ul class="nav menu">
-			<li class="active"><a href="<c:url value="/home" /> "><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg> Cuentas Empresas</a></li>
-			<li><a href="<c:url value="/administrador/prueba" /> "><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Pruebas</a></li>
-			<li><a href="<c:url value="/administrador/proyectos" /> "><svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"></use></svg> Proyectos</a></li>
-			<li><a href="charts.html"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Reportes</a></li>
-			<li><a href="forms.html"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg> Forms</a></li>
-			<li><a href="panels.html"><svg class="glyph stroked app-window"><use xlink:href="#stroked-app-window"></use></svg> Alerts &amp; Panels</a></li>
-			<li><a href="icons.html"><svg class="glyph stroked star"><use xlink:href="#stroked-star"></use></svg> Icons</a></li>
+			
 			<li class="parent ">
-				<a href="#">
-					<span data-toggle="collapse" href="#sub-item-1"><svg class="glyph stroked chevron-down"><use xlink:href="#stroked-chevron-down"></use></svg></span> Dropdown 
-				</a>
+				
 				<ul class="children collapse" id="sub-item-1">
 					<li>
 						<a class="" href="#">
@@ -349,11 +341,11 @@
           <script src="<c:url value="/js/bootstrap.min.js" /> "></script>
            <script src="<c:url value="/js/chart.min.js" /> "></script>
             <script src="<c:url value="/js/chart-data.js" /> "></script>
-             <script src="<c:url value="/js/employee_val.js" /> " ></script>
              <script src="<c:url value="/js/easypiechart.js" /> "></script>
               <script src="<c:url value="/js/easypiechart-data.js" /> "></script>
                <script src="<c:url value="/js/bootstrap-datepicker.js" /> "></script>
                 <script src="<c:url value="/js/jquery.validate.js" />" ></script>
+                <script src="<c:url value="/js/nueva.js" /> "></script>
                  
        
 	<script>

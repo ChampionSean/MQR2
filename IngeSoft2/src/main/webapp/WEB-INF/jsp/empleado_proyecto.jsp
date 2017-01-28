@@ -139,20 +139,13 @@
                                                                 
                                                                 
                                                                         
-                                                                         
-                                                                <div class="form-group">
-									<label class="col-md-3 control-label" for="Nombre_Usuario">Id cliente</label>
-									<div class="col-md-9">
-									<input id="cli_id" class="form-control" value="${proyecto.cliente_id}" name="cli_id" type="text" placeholder=" cli_id" readonly>
-									</div>
-								</div>        
                                                                 
                                                                 
                                                                 
                                                                 <div class="form-group">
 									<label class="col-md-3 control-label" for="Nombre_Cliente">Nombre del responsable</label>
 									<div class="col-md-9">
-									 <input id="cli_id" class="form-control" value="${cliente.nombre_cliente} ${cliente.apellido_paterno_cliente} - Empresa:  ${cliente.nombre_empresa}" type="text" placeholder=" cli_id" readonly>
+									 <input id="cli_id" class="form-control" value="${cliente.persona_id.nombre} - Empresa:  ${cliente.nombre_empresa}" type="text" placeholder=" cli_id" readonly>
 									</div>
 								</div>
                                                                 

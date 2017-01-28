@@ -99,7 +99,7 @@
                                                     <c:forEach var="proyecto" items="${proyectos}">
       <tr>
           
-          <td><a href="<c:url value="/empleado/show_prueba?id=${proyecto.proyecto.id_proyecto}" />">${proyecto.proyecto.nombre_proyecto}</a></td>
+          <td><a href="<c:url value="/empleado/show_ep?id=${proyecto.proyecto.id_proyecto}" />">${proyecto.proyecto.nombre_proyecto}</a></td>
           <td>${proyecto.proyecto.descripcion}</td> 
          
   

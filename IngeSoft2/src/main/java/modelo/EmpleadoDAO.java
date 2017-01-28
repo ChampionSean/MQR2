@@ -46,7 +46,7 @@ public class EmpleadoDAO {
         try {
             tx = session.beginTransaction();
             Empleado f = (Empleado) session.get(Empleado.class, id_empleado);
-            
+            Hibernate.initialize(f.getEmpleado_proyecto());
            lista = f.getEmpleado_proyecto();
         }catch(Exception e){
             e.printStackTrace(); 

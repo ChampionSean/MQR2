@@ -363,7 +363,7 @@ VALUES
 ('La iluminación es muy buena',1),
 ('Esta empresa sería una de las primeras en ensayar nuevas ideas',1),
 ('La variedad no es especialmente importante aqui',1),
-('La gente expresa con franqueza lo que piensa',1)
+('La gente expresa con franqueza lo que piensa',1),
 ('Aquí es importante realizar mucho trabajo',1),
 ('El personal se siente libre para solicitar un aumento de sueldo',1),
 ('Se toman enserio las frases el trabajo antes que el juego',1),
