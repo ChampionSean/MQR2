@@ -238,10 +238,10 @@
                                                                         
                                                                         <div class="col-md-6">
 				<div class="panel panel-default">
-					<div class="panel-heading">Pruebas, presiona agregar para habilitar la prueba al cliente</div>
+					<div class="panel-heading">Pruebas, agregar para habiitar</div>
 					<div class="panel-body">
                                             
-						<table data-toggle="table" data-url="tables/data2.json" >
+						<table data-toggle="table" data-url="tables/data2.json">
 						    <thead>
 						    <tr>
 						        <th data-field="Nombre" >Agregar </th>
@@ -262,6 +262,13 @@
 						</table>
 					</div>
 				</div>
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                          
+                                                                            
+                                                                            
 			</div>                                           
                                                                         
 								
@@ -307,6 +314,7 @@
               <script src="<c:url value="/js/easypiechart-data.js" /> "></script>
                <script src="<c:url value="/js/bootstrap-datepicker.js" /> "></script>
                <script src="<c:url value="/js/jquery.validate.js" />" ></script>
+               <script src="<c:url value="/js/bootstrap-table.js" /> "></script>
         <script src="<c:url value="/js/clientevalShow.js" />" ></script>
 	<script>
             

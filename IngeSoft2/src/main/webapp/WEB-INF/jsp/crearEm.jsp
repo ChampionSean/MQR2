@@ -117,7 +117,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading"><svg class="glyph stroked male user "><use xlink:href="#stroked-male-user"/></svg> Información</div>
 					<div class="panel-body">
-						<form class="form-horizontal" name="crear_cliente" method="POST" action="/IngeSoft2/cliente/crearEmpleado">
+						<form class="form-horizontal" name="crear_empleado" method="POST" action="/IngeSoft2/cliente/crearEmpleado">
 							<fieldset>
 								<!-- Name input-->
                                                                 <p>Aqui podras crear un empleado asociado al proyecto </p>
@@ -167,6 +167,14 @@
 									<label class="col-md-3 control-label" for="Nombre_Empresa">Contraseña</label>
 									<div class="col-md-9">
                                                                             <input id="password" name="password" type="password" placeholder="password" class="form-control" value="${cliente.nombre_empresa}">
+									</div>
+								</div>  
+                                                                        
+                                                                        
+                                                                        <div class="form-group">
+									<label class="col-md-3 control-label" for="Nombre_Empresa">Contraseña</label>
+									<div class="col-md-9">
+                                                                            <input id="password" name="confirm_password" type="password" placeholder="password" class="form-control" value="${cliente.nombre_empresa}">
 									</div>
 								</div>  
                                                                         
@@ -234,14 +242,14 @@
                                                                         <div class="form-group">
 									<label class="col-md-3 control-label" for="Puesto">Número de hijos</label>
 									<div class="col-md-9">
-                                                                            <input class="form-control" id="numero_hijos" name="numero_hijos" type="text" placeholder="numero_hijos"> 
+                                                                            <input class="form-control" id="numero_hijos" name="numero_hijos" type="number" min="0" max="18" placeholder="numero_hijos"> 
 									</div>
 								</div>  
                                                                 
 								<div class="form-group">
 									<label class="col-md-3 control-label" for="correo">Fecha de naciemiento</label>
 									<div class="col-md-9">
-										 <input class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" type="text" placeholder="fecha_nacimiento">
+										 <input class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" type="date" placeholder="fecha_nacimiento">
 									</div>
 								</div>
                                                                         
@@ -317,20 +325,7 @@
                                                                             
 									</div>
 								</div>  
-                                                                        
-                                                                         
-                                                                      
-                                                                        
-                                                                        
-                                                                        
-                                                                        
-                                                                      
-                                                                        
-                                                                       
-                                                                        
-                                                                        
-								
-								<!-- Message body -->
+                   			<!-- Message body -->
 							
 								
 								<!-- Form actions -->
@@ -354,11 +349,13 @@
           <script src="<c:url value="/js/bootstrap.min.js" /> "></script>
            <script src="<c:url value="/js/chart.min.js" /> "></script>
             <script src="<c:url value="/js/chart-data.js" /> "></script>
+             <script src="<c:url value="/js/employee_val.js" /> " ></script>
              <script src="<c:url value="/js/easypiechart.js" /> "></script>
               <script src="<c:url value="/js/easypiechart-data.js" /> "></script>
                <script src="<c:url value="/js/bootstrap-datepicker.js" /> "></script>
-               <script src="<c:url value="/js/jquery.validate.js" />" ></script>
-        <script src="<c:url value="/js/form-validation.js" />" ></script>
+                <script src="<c:url value="/js/jquery.validate.js" />" ></script>
+                 
+       
 	<script>
 		$('#calendar').datepicker({
 		});

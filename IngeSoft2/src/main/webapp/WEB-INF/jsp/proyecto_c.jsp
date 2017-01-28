@@ -210,7 +210,7 @@
                                                     <c:forEach var="persona" items="${personas}">
                                                         <tr>
                                                             
-                                                            <td>${persona.empleado.persona_id.nombre} ${persona.empleado.persona_id.apellido_paterno}</td>
+                                                            <td><a href="<c:url value="/cliente/showEmpleado?id=${persona.empleado.id_empleado}" />">${persona.empleado.persona_id.nombre} ${persona.empleado.persona_id.apellido_paterno}</a></td>
                                                             <td>${persona.empleado.persona_id.correo}</td>
                                                             <td>${persona.empleado.puesto}</td>
                                                             
