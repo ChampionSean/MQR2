@@ -49,11 +49,10 @@
 				<a class="navbar-brand" href="#"><span>HQR</span></a>
 				<ul class="user-menu">
 					<li class="dropdown pull-right">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Admin <span class="caret"></span></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> ${username} <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Profile</a></li>
-							<li><a href="#"><svg class="glyph stroked gear"><use xlink:href="#stroked-gear"></use></svg> Settings</a></li>
-							<li><a href="#"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Logout</a></li>
+							
+							<li><a href="/IngeSoft2/logout"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Salir</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -69,7 +68,7 @@
 			</div>
 		</form>
 		<ul class="nav menu">
-			<li class="active"><a href="<c:url value="/home" /> "><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg> Cuentas Empresas</a></li>
+			<li class="active"><a href="<c:url value="/cliente/home" /> "><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg> Inicio</a></li>
 			
 			<li class="parent ">
 				
@@ -92,7 +91,7 @@
 				</ul>
 			</li>
 			<li role="presentation" class="divider"></li>
-			<li><a href="login.html"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Login Page</a></li>
+			
 		</ul>
 		
 	</div><!--/.sidebar-->
@@ -107,7 +106,7 @@
 		
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Cuenta de cliente</h1>
+				<h1 class="page-header">Proyecto</h1>
 			</div>
 		</div><!--/.row-->
                 
@@ -210,7 +209,7 @@
                                                     <c:forEach var="persona" items="${personas}">
                                                         <tr>
                                                             
-                                                            <td><a href="<c:url value="/cliente/showEmpleado?id=${persona.empleado.id_empleado}" />">${persona.empleado.persona_id.nombre} ${persona.empleado.persona_id.apellido_paterno}</a></td>
+                                                            <td>${persona.empleado.persona_id.nombre} ${persona.empleado.persona_id.apellido_paterno}</td>
                                                             <td>${persona.empleado.persona_id.correo}</td>
                                                             <td>${persona.empleado.puesto}</td>
                                                             

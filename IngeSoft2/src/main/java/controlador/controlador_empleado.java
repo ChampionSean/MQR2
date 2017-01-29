@@ -86,12 +86,15 @@ public ModelAndView pruebaR(ModelMap model, HttpServletRequest request, Redirect
 }
 
 @RequestMapping(value = "/empleado/show_prueba", method=RequestMethod.GET)
-public String empleShowP(ModelMap model, HttpServletRequest request, RedirectAttributes redirect){
+public ModelAndView empleShowP(ModelMap model, HttpServletRequest request, RedirectAttributes redirect){
     long b = Long.parseLong(request.getParameter("id"));
+    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+      String currentPrincipalName = authentication.getName();
+    model.addAttribute("username", currentPrincipalName);
     if(b == 1){
-        return "prueba";
+        return new ModelAndView("prueba", model );
     }
-    return "prueba2";
+    return new ModelAndView("prueba2", model );
 }
 
 @RequestMapping(value = "/empleado/pruebaClima", method=RequestMethod.POST)

@@ -203,8 +203,19 @@ public ModelAndView homeAdmin(ModelMap model, HttpServletRequest a, RedirectAttr
     String currentPrincipalName = authentication.getName();
   List b = cliente_bd.getClientesHabilitados();
     b.remove(0);
+    List<Proyecto> k = proyecto_bd.getProyectos();
+    int m = 0;
+    for(Proyecto p:k){
+        if (p.getHabilitado()==1){
+            m++;
+        }
+    }
+    List<Comentario> l = comentario_bd.getComentarios();
+    model.addAttribute("numFaltantes", empleado_bd.getFaltantes());
+    model.addAttribute("numPro", m);
     model.addAttribute("clientes", b);
     model.addAttribute("username", currentPrincipalName);
+    model.addAttribute("numContestadas", empleado_bd.numContestadas());
     return new ModelAndView("home", model);   
 }
 
@@ -218,6 +229,17 @@ public ModelAndView c_deshabilitadasAdmin(ModelMap model, HttpServletRequest a, 
     model.addAttribute("clientes", b);
     model.addAttribute("username", currentPrincipalName);
     return new ModelAndView("cliente_deshabilitado", model);   
+}
+
+@RequestMapping(value = "/administrador/comentarios", method=RequestMethod.GET)
+public ModelAndView c_comentarios(ModelMap model, HttpServletRequest a, RedirectAttributes redirect){
+    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    String currentPrincipalName = authentication.getName();
+  List b = comentario_bd.getComentarios();
+    model.addAttribute("comentarios",b);
+    
+    model.addAttribute("username", currentPrincipalName);
+    return new ModelAndView("Comentarios", model);   
 }
 
 
@@ -408,9 +430,31 @@ public ModelAndView home(ModelMap model, HttpServletRequest a, RedirectAttribute
       comentario_bd.guardar(c);
       
       mail_sender.send(construirEmail(c.getCorreo(), c.getComentario(), c.getNombre()));
+      
+      mail_sender.send(construirEmailManuel(c.getCorreo(), c.getComentario(), c.getNombre()));
       return  new ModelAndView("redirect:/");
   }
   
+  
+   private MimeMessagePreparator construirEmailManuel(final String correo , String mensaje, String nombre) {
+        
+        final String texto = "La persona " + nombre + " con email " +correo;
+        final String url = "dejo el siguiente comentario: " + mensaje;
+        
+        MimeMessagePreparator message_preparator = new MimeMessagePreparator() {
+ 
+            @Override
+            public void prepare(MimeMessage message) throws Exception {
+                message.setFrom(new InternetAddress("validar.correo.sistema@gmail.com"));
+                message.setRecipient(Message.RecipientType.TO,
+                        new InternetAddress("juanmanuel_s_n@hotmail.com"));
+                message.setText(texto + "\n" + url);
+                message.setSubject("Nuevo comentario para HQR");
+            }
+        };
+        
+        return message_preparator;        
+    }
   
    private MimeMessagePreparator construirEmail(final String correo , String mensaje, String nombre) {
         
@@ -423,7 +467,7 @@ public ModelAndView home(ModelMap model, HttpServletRequest a, RedirectAttribute
             public void prepare(MimeMessage message) throws Exception {
                 message.setFrom(new InternetAddress("validar.correo.sistema@gmail.com"));
                 message.setRecipient(Message.RecipientType.TO,
-                        new InternetAddress("marcoaurelio1655@ciencias.unam.mx"));
+                        new InternetAddress("celara91@gmail.com"));
                 message.setText(texto + "\n" + url);
                 message.setSubject("Nuevo comentario para HQR");
             }

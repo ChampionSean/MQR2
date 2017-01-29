@@ -9,10 +9,12 @@ package controlador;
 import MapeoBD.Cliente;
 import MapeoBD.Empleado;
 import MapeoBD.Empleado_proyecto;
+import MapeoBD.Persona;
 import MapeoBD.Proyecto;
 import MapeoBD.Prueba;
 import MapeoBD.Prueba_Cliente;
 import MapeoBD.Prueba_Proyecto;
+import MapeoBD.Prueba_empleado;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -29,6 +31,8 @@ import modelo.ClienteDAO;
 import modelo.EmpleadoDAO;
 import modelo.ProyectoDAO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -77,9 +81,40 @@ public ModelAndView showep_proyecto(ModelMap model, HttpServletRequest a, Redire
     if(proyecto.getHabilitado() == 1){
         model.addAttribute("checado", "checked");
     }
+     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+      String currentPrincipalName = authentication.getName();
+    model.addAttribute("username", currentPrincipalName);
     Cliente e = proyecto.getCliente();
-    //List<Prueba> pruebas = proyecto_bd.damePruebas(proyecto.getId_proyecto());
-   // model.addAttribute("pruebas", pruebas);
+    Set<Prueba_Proyecto> pruebas = proyecto_bd.damePruebas(proyecto.getId_proyecto());
+    Persona p = cliente_bd.porCorreo(currentPrincipalName);
+    
+    Set<Prueba_empleado> pe = empleado_bd.getPruebas(p.getEmpleado_persona().getId_empleado());
+    
+    
+    LinkedList<Prueba> k =  new LinkedList<Prueba>();
+    LinkedList<Prueba> m =  new LinkedList<Prueba>();
+    
+    LinkedList<Prueba> s = new LinkedList<Prueba>();
+    
+    for(Prueba_Proyecto pp: pruebas){
+       k.add(pp.getPrueba());
+    }
+    
+     for(Prueba_empleado pp: pe){
+       m.add(pp.getPrueba());
+    }
+     
+     for(Prueba prueba:k){
+         if(m.contains(prueba)){
+            
+         }else{
+             s.add(prueba);
+         }
+     }
+    
+    
+    model.addAttribute("pruebas", s);
+  
     model.addAttribute("cliente",e);
     model.addAttribute("proyecto", proyecto);
     return new ModelAndView("empleado_proyecto", model);
@@ -103,7 +138,9 @@ public ModelAndView showcp_proyecto(ModelMap model, HttpServletRequest a, Redire
     
     
    Set<Prueba_Proyecto> pc = proyecto_bd.damePruebas(Long.parseLong(a.getParameter("id")));
-    
+      Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+      String currentPrincipalName = authentication.getName();
+    model.addAttribute("username", currentPrincipalName);
     model.addAttribute("personas", proyecto_bd.dameEmpleados(Long.parseLong(a.getParameter("id"))));
     model.addAttribute("pruebak", pc);
     model.addAttribute("pruebas", pruebas);

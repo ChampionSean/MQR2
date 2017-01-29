@@ -61,12 +61,12 @@
 			</div>
 		</form>
 		<ul class="nav menu">
-                        <li><a href="<c:url value="/home" /> "><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg> Cuentas Empresas</a></li>
-                        <li class="active" ><a href="<c:url value="/administrador/prueba" /> "><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Pruebas</a></li>
+                       <li><a href="<c:url value="/home" /> "><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg> Cuentas Empresas</a></li>
+                       <li class="active"><a href="<c:url value="/administrador/prueba" /> "><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Pruebas</a></li>
 			<li><a href="<c:url value="/administrador/proyectos" /> "><svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"></use></svg> Proyectos</a></li>
 			<li><a href="<c:url value="/administrador/cuentas_deshabilitadas" /> "><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Cuentas deshabilitadas</a></li>
-			
-			 <li><a href="<c:url value="/administrador/reporte" /> "><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg>Reporte</a></li>
+			<li><a href="<c:url value="/administrador/reporte" /> "><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg>Reporte</a></li>
+                        <li><a href="<c:url value="/administrador/comentarios" /> "><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg>Comentarios</a></li>
 			<li class="parent ">
 				
 				<ul class="children collapse" id="sub-item-1">

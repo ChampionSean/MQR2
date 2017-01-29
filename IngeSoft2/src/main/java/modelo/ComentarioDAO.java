@@ -7,6 +7,11 @@ package modelo;
 
 
 import MapeoBD.Comentario;
+import MapeoBD.Proyecto;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -42,5 +47,21 @@ public class ComentarioDAO {
         }finally {
            session.close();
         }
+     }
+     
+     public List<Comentario> getComentarios(){
+         Session session = sessionFactory.openSession();
+        Transaction tx = null;
+        List<Comentario> lista = null;
+        try {
+            tx = session.beginTransaction();
+            Query query = session.createQuery("from Comentario");
+            lista = query.list();
+        }catch(Exception e){
+            e.printStackTrace(); 
+        }finally{
+            session.close();
+        }
+        return lista;   
      }
 }

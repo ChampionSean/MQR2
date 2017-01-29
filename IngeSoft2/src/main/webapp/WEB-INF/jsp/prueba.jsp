@@ -40,7 +40,7 @@
 				<a class="navbar-brand" href="#"><span>HQR</span></a>
 				<ul class="user-menu">
 					<li class="dropdown pull-right">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Admin <span class="caret"></span></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> ${username} <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
 							
 							<li><a href="/IngeSoft2/logout"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Salir</a></li>
@@ -59,11 +59,7 @@
 			</div>
 		</form>
 		<ul class="nav menu">
-			<li><a href="<c:url value="/home" /> "><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg> Cuentas Empresas</a></li>
-			<li class="active"><a href="<c:url value="/administrador/prueba" /> "><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Pruebas</a></li>
-			<li><a href="<c:url value="/administrador/proyectos" /> "><svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"></use></svg> Proyectos</a></li>
-			<li><a href="<c:url value="/administrador/cuentas_deshabilitadas" /> "><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Cuentas deshabilitadas</a></li>
-			 <li><a href="<c:url value="/administrador/reporte" /> "><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg>Reporte</a></li>
+			
 			<li class="parent ">
 				
 				<ul class="children collapse" id="sub-item-1">
@@ -85,7 +81,7 @@
 				</ul>
 			</li>
 			<li role="presentation" class="divider"></li>
-			<li><a href="login.html"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Login Page</a></li>
+			
 		</ul>
 
 	</div><!--/.sidebar-->
@@ -278,19 +274,19 @@ Te pedimos contestar de la manera más honesta y sincera posible ya que no exist
 				<label for="1">Totalmente en desacuerdo</label>
 				
 				<br>
-                 <input id="2" type="radio" name="1" value="6"> 
+                 <input id="2" type="radio" name="6" value="6"> 
 				<label for="2">En desacuerdo</label>
 				
 				<br>
-                 <input id="3" type="radio" name="1" value="6"> 
+                 <input id="3" type="radio" name="6" value="6"> 
 				<label for="3">Ni de acuerdo ni en desacuerdo</label>
 				
 				<br>
-                 <input id="4" type="radio" name="1" value="6"> 
+                 <input id="4" type="radio" name="6" value="6"> 
 				<label for="4">De acuerdo</label>
 				
 				<br>
-                 <input id="5" type="radio" name="1" value="6">
+                 <input id="5" type="radio" name="6" value="6">
 				<label for="5">Totalmente de acuerdo</label>
 			
 		</fieldset>

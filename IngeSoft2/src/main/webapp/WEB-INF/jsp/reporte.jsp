@@ -60,11 +60,12 @@
 			</div>
 		</form>
 		<ul class="nav menu">
-                        <li><a href="<c:url value="/home" /> "><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg> Cuentas Empresas</a></li>
+                        <<li><a href="<c:url value="/home" /> "><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg> Cuentas Empresas</a></li>
 			<li><a href="<c:url value="/administrador/prueba" /> "><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Pruebas</a></li>
 			<li><a href="<c:url value="/administrador/proyectos" /> "><svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"></use></svg> Proyectos</a></li>
 			<li><a href="<c:url value="/administrador/cuentas_deshabilitadas" /> "><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Cuentas deshabilitadas</a></li>
-                        <li class="active"><a href="<c:url value="/administrador/reporte" /> "><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg>Reporte</a></li>
+			<li class="active"><a href="<c:url value="/administrador/reporte" /> "><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg>Reporte</a></li>
+                        <li><a href="<c:url value="/administrador/comentarios" /> "><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg>Comentarios</a></li>
 			
 			<li class="parent ">
 				
@@ -119,6 +120,7 @@
 						        <th data-field="id" data-sortable="true">Pregunta</th>
 						        <th data-field="name"  data-sortable="true">Respuesta</th>
 						        <th data-field="price" data-sortable="true">No Pregunta</th>
+                                                        <th data-field="kkk" data-sortable="true">Puntaje</th>
                                                          
 						    </tr>
 						    </thead>
@@ -129,6 +131,7 @@
           <td>${r.pregunta_respuesta.pregunta.nombre_pregunta}</td>
           <td>${r.pregunta_respuesta.respuesta.nombre_respuesta}</td>
           <td>${r.pregunta_respuesta.pregunta.id_pregunta}</td>
+          <td>${r.pregunta_respuesta.puntaje_respuesta}</td>
          
       </tr>
         </c:forEach>

@@ -1,9 +1,8 @@
 <%-- 
-    Document   : consulta2
-    Created on : 13-sep-2016, 20:10:47
-    Author     : Marco
+    Document   : verpro
+    Created on : 30-sep-2016, 17:33:22
+    Author     : Salvador
 --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -15,20 +14,19 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="<c:url value="/imagenes/LogoHQRmediana.png" /> "/>
-    <title>HQR</title>	
     
+    <title>HQR</title>
     
-    <link href="<c:url value="/css/bootstrap.min.css" /> " rel="stylesheet"/>
+     <link href="<c:url value="/css/bootstrap.min.css" /> " rel="stylesheet"/>
     <link href="<c:url value="/css/datepicker3.css" /> " rel="stylesheet"/>
     <link href="<c:url value="/css/bootstrap-table.css" /> " rel="stylesheet"/>
     <link href="<c:url value="/css/styles.css" /> " rel="stylesheet"/>
     
     
     <script src="<c:url value="/js/lumino.glyphs.js" /> "></script>
-    
-
-    
+  	
   </head>
+  
   
   <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -61,13 +59,12 @@
 			</div>
 		</form>
 		<ul class="nav menu">
-                        <li class="active"><a href="<c:url value="/home" /> "><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg> Cuentas Empresas</a></li>
+                      <li><a href="<c:url value="/home" /> "><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg> Cuentas Empresas</a></li>
 			<li><a href="<c:url value="/administrador/prueba" /> "><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Pruebas</a></li>
 			<li><a href="<c:url value="/administrador/proyectos" /> "><svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"></use></svg> Proyectos</a></li>
 			<li><a href="<c:url value="/administrador/cuentas_deshabilitadas" /> "><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Cuentas deshabilitadas</a></li>
 			<li><a href="<c:url value="/administrador/reporte" /> "><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg>Reporte</a></li>
-                        <li><a href="<c:url value="/administrador/comentarios" /> "><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg>Comentarios</a></li>
-			
+                        <li class="active"><a href="<c:url value="/administrador/comentarios" /> "><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg>Comentarios</a></li>
 			<li class="parent ">
 				
 				<ul class="children collapse" id="sub-item-1">
@@ -103,86 +100,35 @@
 		
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Pagina principal</h1>
-                                
+				<h1 class="page-header">Tables</h1>
 			</div>
 		</div><!--/.row-->
+                
 				
-                
-                <div class="row">
-			<div class="col-xs-12 col-md-6 col-lg-3">
-				<div class="panel panel-blue panel-widget ">
-					<div class="row no-padding">
-						<div class="col-sm-3 col-lg-5 widget-left">
-                                                        <svg class="glyph stroked clipboard with paper"><use xlink:href="#stroked-clipboard-with-paper"/></svg>
-							
-						</div>
-						<div class="col-sm-9 col-lg-7 widget-right">
-							<div class="large">${numPro}</div>
-							<div class="text-muted">Proyectos activos</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			
-			<div class="col-xs-12 col-md-6 col-lg-3">
-				<div class="panel panel-teal panel-widget">
-					<div class="row no-padding">
-						<div class="col-sm-3 col-lg-5 widget-left">
-							<svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg>
-						</div>
-						<div class="col-sm-9 col-lg-7 widget-right">
-							<div class="large">${numFaltantes}</div>
-							<div class="text-muted">Empleados por constestar</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-12 col-md-6 col-lg-3">
-				<div class="panel panel-red panel-widget">
-					<div class="row no-padding">
-						<div class="col-sm-3 col-lg-5 widget-left">
-							<svg class="glyph stroked app-window-with-content"><use xlink:href="#stroked-app-window-with-content"></use></svg>
-						</div>
-						<div class="col-sm-9 col-lg-7 widget-right">
-							<div class="large">${numContastadas}</div>
-							<div class="text-muted">Pruebas contestadas</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div><!--/.row-->
-                
 		
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
-                                    <a href="<c:url value="/exportarExcelCliente"/> "><button class="btn-primary">Exportar Excel</button></a>
-                                <a href="<c:url value="/crear"/> "><button class="btn-primary">Agregar Cuenta</button></a>
-					<div class="panel-heading">Cuentas de Empresas</div>
+					<div class="panel-heading">Proyectos</div>
 					<div class="panel-body">
-						<table data-toggle="table"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
+						<table data-toggle="table" data-url="tables/data1.json"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
 						    <thead>
 						    <tr>
-						        <th data-field="state" data-sortable="true">Empresa</th>
-						        <th data-field="id" data-sortable="true">Titular de Empresa</th>
-						        <th data-field="name"  data-sortable="true">Correo</th>
-						        <th data-field="price" data-sortable="true">Habilitado</th>
-                                                        
-                                                        
+						        <th data-field="Nombre" data-sortable="true">Nombre</th>
+						        <th data-field="Correo" data-sortable="true">Correo</th>
+						        <th data-field="Comentario"  data-sortable="true">Comentario</th>
+						        
+                                                         
 						    </tr>
 						    </thead>
-                                                    <c:forEach var="cliente" items="${clientes}">
+                                                    <c:forEach var="comentario" items="${comentarios}">
       <tr>
-          
-          <td><a href="<c:url value="/administrador/show_cuenta?id=${cliente.id_cliente}" />">${cliente.nombre_empresa}</a></td>
-          <td>${cliente.persona_id.nombre} ${cliente.persona_id.apellido_paterno} ${cliente.persona_id.apellido_materno}</td> 
-          <td>${cliente.persona_id.correo}</td>
-          <td>${cliente.habilitado}</td>
   
-          
-          
-          
+          <td>${comentario.nombre}</td>
+          <td>${comentario.correo}</td>
+          <td>${comentario.comentario}</td>
+      
+         
       </tr>
         </c:forEach>
 						</table>
@@ -190,7 +136,14 @@
 				</div>
 			</div>
 		</div><!--/.row-->	
-                      
+                
+                
+                
+ 
+                
+                
+                
+                
 		<div class="row">
 			
 			<div class="col-md-6">
@@ -263,5 +216,10 @@
 		})
 	</script>	
 </body>
+  
+    <a href="<c:url value="/verifica"/> "><button>Agregar Proyecto</button></a>
+   
+        
+ 
 </html>
  

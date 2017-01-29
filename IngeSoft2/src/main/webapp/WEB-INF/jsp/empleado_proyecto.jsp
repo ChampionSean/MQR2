@@ -49,11 +49,10 @@
 				<a class="navbar-brand" href="#"><span>HQR</span></a>
 				<ul class="user-menu">
 					<li class="dropdown pull-right">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Admin <span class="caret"></span></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> ${username} <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Profile</a></li>
-							<li><a href="#"><svg class="glyph stroked gear"><use xlink:href="#stroked-gear"></use></svg> Settings</a></li>
-							<li><a href="#"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Logout</a></li>
+							
+							<li><a href="/IngeSoft2/logout"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Salir</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -69,17 +68,9 @@
 			</div>
 		</form>
 		<ul class="nav menu">
-			<li class="active"><a href="<c:url value="/home" /> "><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg> Cuentas Empresas</a></li>
-			<li><a href="<c:url value="/administrador/prueba" /> "><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Pruebas</a></li>
-			<li><a href="<c:url value="/administrador/proyectos" /> "><svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"></use></svg> Proyectos</a></li>
-			<li><a href="charts.html"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Reportes</a></li>
-			<li><a href="forms.html"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg> Forms</a></li>
-			<li><a href="panels.html"><svg class="glyph stroked app-window"><use xlink:href="#stroked-app-window"></use></svg> Alerts &amp; Panels</a></li>
-			<li><a href="icons.html"><svg class="glyph stroked star"><use xlink:href="#stroked-star"></use></svg> Icons</a></li>
+			
 			<li class="parent ">
-				<a href="#">
-					<span data-toggle="collapse" href="#sub-item-1"><svg class="glyph stroked chevron-down"><use xlink:href="#stroked-chevron-down"></use></svg></span> Dropdown 
-				</a>
+				
 				<ul class="children collapse" id="sub-item-1">
 					<li>
 						<a class="" href="#">
@@ -99,7 +90,7 @@
 				</ul>
 			</li>
 			<li role="presentation" class="divider"></li>
-			<li><a href="login.html"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Login Page</a></li>
+			
 		</ul>
 		
 	</div><!--/.sidebar-->
@@ -128,7 +119,7 @@
 						<form class="form-horizontal" method="POST" action="/IngeSoft2/modificaProyecto">
 							<fieldset>
 								<!-- Name input-->
-                                                               <h2>Elige modifica el valor del Proyecto: ${proyecto.nombre_proyecto}   </h2>
+                                                               <h2> Proyecto: ${proyecto.nombre_proyecto}   </h2>
                                                                 
                                                                 <div class="form-group">
 									<label class="col-md-3 control-label" for="id">Id Proyecto</label>
@@ -193,11 +184,38 @@
 							
 								
 								<!-- Form actions -->
-								<div class="form-group">
-									<div class="col-md-12 widget-right">
-                                                                            <a href="<c:url value="/empleado/prueba" /> ">Contestar Prueba</a>
-									</div>
-								</div>
+								<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">Indice de pruebas</div>
+					<div class="panel-body">
+						<table data-toggle="table"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
+						    <thead>
+						    <tr>
+						        <th data-field="state" data-sortable="true">Contestar</th>
+						        <th data-field="id" data-sortable="true">Nombre</th>
+						        
+                                                        
+                                                        
+						    </tr>
+						    </thead>
+                                                    <c:forEach var="prueba" items="${pruebas}">
+      <tr>
+          
+          <td><a href="<c:url value="/empleado/show_prueba?id=${prueba.id_prueba}" />">Contestar</a></td>
+          <td>${prueba.nombre_prueba}</td> 
+         
+  
+          
+          
+          
+      </tr>
+        </c:forEach>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div><!--/.row-->	
 							</fieldset>
 						</form>
 					</div>

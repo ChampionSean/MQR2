@@ -15,6 +15,7 @@ import MapeoBD.Prueba;
 import MapeoBD.Prueba_empleado;
 import MapeoBD.Respuesta_empleado;
 import MapeoBD.Usuario;
+import java.util.Date;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -48,6 +49,24 @@ public class EmpleadoDAO {
             Empleado f = (Empleado) session.get(Empleado.class, id_empleado);
             Hibernate.initialize(f.getEmpleado_proyecto());
            lista = f.getEmpleado_proyecto();
+        }catch(Exception e){
+            e.printStackTrace(); 
+        }finally{
+            session.close();
+        }
+        return lista;
+    }
+    
+    
+     public Set<Prueba_empleado> getPruebas(long id_empleado){
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+        Set<Prueba_empleado> lista = null;
+        try {
+            tx = session.beginTransaction();
+            Empleado f = (Empleado) session.get(Empleado.class, id_empleado);
+            Hibernate.initialize(f.getPrueba_empleado());
+           lista = f.getPrueba_empleado();
         }catch(Exception e){
             e.printStackTrace(); 
         }finally{
@@ -95,6 +114,56 @@ public class EmpleadoDAO {
             session.close();
         }    
         return lista;
+    }
+    
+    public int getFaltantes(){
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+        List<Prueba_empleado> lista=new LinkedList();
+        List<Empleado> lis = new LinkedList();
+        List<Empleado> no = new LinkedList();
+        try {
+            tx = session.beginTransaction();
+            Query query = session.createQuery("from Prueba_empleado");
+            lista = query.list();
+            
+            Query query2 = session.createQuery("from Empleado");
+            lis = query2.list();
+            for(Prueba_empleado a :lista){
+               
+                   lis.remove(a);
+               
+            }
+            
+            
+        }catch(Exception e){
+            e.printStackTrace();  
+        }finally{
+            session.close();
+        }    
+        return lis.size();
+    }
+    
+    
+    public int numContestadas(){
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+        List<Prueba_empleado> lista=new LinkedList();
+       
+        try {
+            tx = session.beginTransaction();
+            Query query = session.createQuery("from Prueba_empleado");
+            lista = query.list();
+            
+            
+            
+            
+        }catch(Exception e){
+            e.printStackTrace();  
+        }finally{
+            session.close();
+        }    
+        return lista.size();
     }
     
     
@@ -364,7 +433,7 @@ public class EmpleadoDAO {
         Respuesta_empleado re = null;
         try {
             tx = session.beginTransaction();
-            
+            pe = new Prueba_empleado();
             Empleado participante = (Empleado) session.get(Empleado.class, id_empleado);
             Prueba prueba = (Prueba) session.get(Prueba.class, id_prueba);
             int k = 1;
@@ -381,9 +450,18 @@ public class EmpleadoDAO {
                  Hibernate.initialize(participante.getRespuesta_empleado());
                  prrr.getRespuesta_empleado().add(re);
                  participante.getRespuesta_empleado().add(re);
+                 pe.setEmpleado(participante);
+                 pe.setPrueba(prueba);
+                 participante.getPrueba_empleado().add(pe);
+                 prueba.getPrueba_empleado().add(pe);
+                 pe.setPuntaje_prueba(0);
+                 pe.setFecha_prueba(new Date());
+                 
+                 session.save(pe);
                  session.save(re);
                  session.update(prrr);
                  session.update(participante);
+                 session.update(prueba);
                  k++;
             }
             //falta codgigo para contestar

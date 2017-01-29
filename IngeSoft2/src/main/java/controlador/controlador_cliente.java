@@ -53,10 +53,12 @@ public class controlador_cliente {
 @RequestMapping(value = "/cliente/home", method=RequestMethod.GET)
 public ModelAndView homeClie(ModelMap model, HttpServletRequest a, RedirectAttributes redirect){
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-    String currentPrincipalName = authentication.getName();
+      String currentPrincipalName = authentication.getName();
+    model.addAttribute("username", currentPrincipalName);
+  
        Set<Proyecto> ppp = cliente_bd.Proyectos(currentPrincipalName);
        model.addAttribute("proyectos", ppp);
-       model.addAttribute("username", currentPrincipalName);
+       
        return new ModelAndView("home_cliente", model);
 }
 
@@ -116,6 +118,9 @@ public ModelAndView addProof(ModelMap model, HttpServletRequest a, RedirectAttri
 public ModelAndView formEmpleado(ModelMap model, HttpServletRequest a, RedirectAttributes redirect){
     String id = a.getParameter("id");
     model.addAttribute("id", id);
+     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+      String currentPrincipalName = authentication.getName();
+    model.addAttribute("username", currentPrincipalName);
     return new ModelAndView("crearEm");
     
 }
