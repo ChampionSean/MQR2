@@ -170,59 +170,11 @@ public ModelAndView listaEmpleados(HttpServletRequest a, ModelMap b){
      return new ModelAndView("datos_empleado",b);   
 }
 
-@RequestMapping(value = "/verificaEmpleado", method=RequestMethod.GET)
-public String crearEmpleado(HttpServletRequest a){
-     
-    return "crearEm";
-}
 
-@RequestMapping(value = "/verEmpleado", method = RequestMethod.POST)
-    public ModelAndView consultarEmpleado(ModelMap model,HttpServletRequest request){
-        String nombre = request.getParameter("nombre_cliente"); 
-        Empleado empleado= empleado_bd.consultaEmpleadoNom(nombre);
-       
-       Long id_empleado=empleado.getId_empleado();
-       String direcciones=empleado.getDireccion();
-       int h_x_s=empleado.getHoras_x_semana();
-       String carrera=empleado.getCarrera();
-       String edo_civil=empleado.getEstado_civil();
-       int numero_hijos=empleado.getNumero_hijos();
-       Date fecha_nac=empleado.getFecha_nacimiento();
-       String antiguedad=empleado.getAntiguedad();
-       String sueldo=empleado.getSueldo_mensual();
-       String sexo=empleado.getSexo();
-       String candidato=empleado.getCandidato();
-       int habilitado=empleado.getHabilitado();
-       
-       model.addAttribute("id_empleado",id_empleado);
-       model.addAttribute("direccion",direcciones);
-       model.addAttribute("horas_x_semana",h_x_s);
-       model.addAttribute("carrera",carrera);
-       model.addAttribute("estado_civil",edo_civil);
-       model.addAttribute("numero_hijos",numero_hijos);
-       model.addAttribute("fecha_nacimiento",fecha_nac);
-       model.addAttribute("antiguiedad",antiguedad);
-       model.addAttribute("sueldo_mensual",sueldo);
-       model.addAttribute("sexo",sexo);
-       model.addAttribute("candidato",candidato );
-       model.addAttribute("habilitado", habilitado);
-       
-       return new ModelAndView("datos_empleado",model);   
-       
-       
-    }
+
+
     
-     @RequestMapping(value = "/borraEmpleado", method = RequestMethod.POST)
-    public ModelAndView borrarEmpleado(ModelMap model,HttpServletRequest request){
-         String nombre_empleado = request.getParameter("nombre_empleado"); 
-         empleado_bd.borrarEmpleadoNom(nombre_empleado);
-         
-         model.addAttribute("nombre_empleado", nombre_empleado);
      
-       return new ModelAndView("modificadoEmpleado",model);   
-       
-    }
-    
     
     @RequestMapping(value = "/cliente/crearEmpleado", method = RequestMethod.POST)
     public ModelAndView creaEmpleado(ModelMap model,HttpServletRequest request){

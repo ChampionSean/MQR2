@@ -30,6 +30,7 @@ import javax.servlet.http.HttpServletRequest;
 import modelo.ClienteDAO;
 import modelo.EmpleadoDAO;
 import modelo.ProyectoDAO;
+import modelo.PruebaDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -54,6 +55,9 @@ public class controlador_proyecto {
   
   @Autowired
  private EmpleadoDAO empleado_bd;
+  
+  @Autowired
+ private PruebaDAO prueba_bd;
  
 @RequestMapping(value = "/administrador/show_p", method=RequestMethod.GET)
 public ModelAndView show_proyecto(ModelMap model, HttpServletRequest a, RedirectAttributes redirect){
@@ -85,33 +89,28 @@ public ModelAndView showep_proyecto(ModelMap model, HttpServletRequest a, Redire
       String currentPrincipalName = authentication.getName();
     model.addAttribute("username", currentPrincipalName);
     Cliente e = proyecto.getCliente();
-    Set<Prueba_Proyecto> pruebas = proyecto_bd.damePruebas(proyecto.getId_proyecto());
-    Persona p = cliente_bd.porCorreo(currentPrincipalName);
     
+    Set<Prueba_Proyecto> pruebas = proyecto_bd.damePruebas(proyecto.getId_proyecto());
+     
+ 
+    
+    Persona p = cliente_bd.porCorreo(currentPrincipalName);
     Set<Prueba_empleado> pe = empleado_bd.getPruebas(p.getEmpleado_persona().getId_empleado());
     
-    
-    LinkedList<Prueba> k =  new LinkedList<Prueba>();
-    LinkedList<Prueba> m =  new LinkedList<Prueba>();
-    
+    LinkedList<Long> indices = new LinkedList<Long>();
     LinkedList<Prueba> s = new LinkedList<Prueba>();
-    
-    for(Prueba_Proyecto pp: pruebas){
-       k.add(pp.getPrueba());
-    }
-    
-     for(Prueba_empleado pp: pe){
-       m.add(pp.getPrueba());
-    }
-     
-     for(Prueba prueba:k){
-         if(m.contains(prueba)){
-            
-         }else{
-             s.add(prueba);
-         }
+   
+     for(Prueba_Proyecto pp:pruebas){
+        indices.add(pp.getPrueba().getId_prueba());
      }
-    
+     for(Prueba_empleado pee:pe){
+        
+             indices.remove(pee.getPrueba().getId_prueba());    
+     }
+     for(Long b:indices){
+         s.add(prueba_bd.getPrueba(b));
+     }
+     
     
     model.addAttribute("pruebas", s);
   
