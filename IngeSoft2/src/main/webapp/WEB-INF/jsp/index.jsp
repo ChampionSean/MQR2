@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
      <link rel="stylesheet" href="<c:url value="/css/form.css" /> ">
-
+<script src="<c:url value="/js/jquery-1.11.1.min.js" /> "></script>
     <style>
       body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
 body, html {
@@ -286,6 +286,7 @@ body, html {
  
 <!-- Add Google Maps -->
 <script src="https://maps.googleapis.com/maps/api/js"></script>
+
 <script>
 <!-- Google Map Location -->
 
