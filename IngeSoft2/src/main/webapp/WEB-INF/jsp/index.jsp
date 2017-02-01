@@ -93,20 +93,10 @@ body, html {
   <ul class="w3-navbar" id="myNavbar">
       <li><a href="#"></a></li>
     <li class="w3-right">
-        <form method="POST" action="/IngeSoft2/login" class="form-inline">
-            <form class="form-inline">
-    <div class="form-group">
-      <label for="email">Correo electrónico:</label>
-      <input type="email" class="form-control" id="email" name="username" placeholder="correo@ejemplo.com">
-    </div>
-    <div class="form-group">
-      <label for="pwd">Contraseña:</label>
-      <input type="password" class="form-control" id="pwd" name="password" placeholder="*****">
-    </div>
-    <a href=" <c:url value="/restablecimientoPassword"/> " >¿Olvidaste tu password?</a>
-    <button type="submit" class="btn btn-primary">Ingresar</button>
-  </form>
-        </form>
+       <a href="<c:url value="/login" /> ">
+            
+    <button class="btn btn-primary">Ingresar</button>
+       </a>
     </li>
   </ul>
 </div>
@@ -291,7 +281,7 @@ body, html {
     <a href="#" class="w3-hover-text-grey"><i class="fa fa-flickr"></i></a>
     <a href="#" class="w3-hover-text-indigo"><i class="fa fa-linkedin"></i></a>
   </div>
-  <p>Powered by <a href="http://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">MIZTLI</a></p>
+  
 </footer>
  
 <!-- Add Google Maps -->

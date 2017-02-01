@@ -107,6 +107,12 @@ public String crear(HttpServletRequest a){
     return "crear";
 }
 
+@RequestMapping(value = "/login", method=RequestMethod.GET)
+public String logear(HttpServletRequest a){
+     
+    return "logeo";
+}
+
 
 @RequestMapping(value = "/checkEmail", method=RequestMethod.GET)
 @ResponseBody
