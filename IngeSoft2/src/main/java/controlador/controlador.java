@@ -254,7 +254,7 @@ public ModelAndView reporte(ModelMap model, HttpServletRequest a, RedirectAttrib
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
     String currentPrincipalName = authentication.getName();
     List<Respuesta_empleado> re = respuestaE_bd.reporte();
- 
+    
     
     model.addAttribute("respuestaE", re);
     model.addAttribute("username", currentPrincipalName);

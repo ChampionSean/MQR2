@@ -31,7 +31,7 @@ public class Respuesta_empleadoDAO {
         
         try {
             tx = session.beginTransaction();
-            Query query = session.createQuery("from Respuesta_empleado");
+            Query query = session.createQuery("from Respuesta_empleado f order by f.id");
             
             lista = query.list();
             for(Respuesta_empleado v:lista){
