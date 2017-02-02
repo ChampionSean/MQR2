@@ -47,7 +47,7 @@
 					<li class="dropdown pull-right">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> ${username} <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="/IngeSoft2/logout"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Salir</a></li>
+							<li><a href="/HQR/logout"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Salir</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -116,7 +116,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading"><svg class="glyph stroked male user "><use xlink:href="#stroked-male-user"/></svg> Información</div>
 					<div class="panel-body">
-						<form class="form-horizontal" name="cliente_show" method="POST" action="/IngeSoft2/administrador/modificarCliente">
+						<form class="form-horizontal" name="cliente_show" method="POST" action="/HQR/administrador/modificarCliente">
 							<fieldset>
 								<!-- Name input-->
                                                                 <p>Aqui podra actualizar la información del cliente</p>
@@ -287,7 +287,7 @@
 							</fieldset>
 						</form>
                                                                          <c:if test="${cliente.habilitado == 0}">
-                                                                             <form method="POST" action="/IngeSoft2/administrador/eliminarCliente">
+                                                                             <form method="POST" action="/HQR/administrador/eliminarCliente">
                                                                                  <button class="btn-danger">Eliminar Cuenta</button> 
                                                                                  <input id="id" name="id_cliente" type="hidden" placeholder="Your name" class="form-control" value="${cliente.id_cliente}" readonly>
                                                                                  

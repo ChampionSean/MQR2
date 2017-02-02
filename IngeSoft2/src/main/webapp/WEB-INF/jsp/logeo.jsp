@@ -36,7 +36,7 @@
 			<div class="login-panel panel panel-default">
 				<div class="panel-heading">Entrar</div>
 				<div class="panel-body">
-					<form role="form" method="POST" action="/IngeSoft2/login">
+					<form role="form" method="POST" action="/HQR/login">
 						<fieldset>
 							<div class="form-group">
 								<input class="form-control" placeholder="E-mail" name="username" type="email" autofocus="">

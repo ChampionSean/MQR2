@@ -52,7 +52,7 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">Usuario: ${username}</a></li>
-                <li><a href="/IngeSoft2/salir">Salir</a></li>
+                <li><a href="/HQR/salir">Salir</a></li>
                 
             </ul>
         </div>
@@ -61,7 +61,7 @@
     <body>
     <center>
          <div class="formlog">
-        <form name="crear_cliente" method="POST" action="/IngeSoft2/cliente/modificarCliente">
+        <form name="crear_cliente" method="POST" action="/HQR/cliente/modificarCliente">
             <h2>Información de la cuenta</h2>
             <p>Aqui podra actualizar la información del cliente</p>
             <input id="id" name="id_cliente" type="text" value="${cliente.id_cliente}" readonly>

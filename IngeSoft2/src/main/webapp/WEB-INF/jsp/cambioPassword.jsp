@@ -10,7 +10,7 @@
     </head>
     <body>    
                    
-        <form  method="POST" action="/IngeSoft2/cambiarPassword">
+        <form  method="POST" action="/HQR/cambiarPassword">
             <h2>Cambiar Password</h2>           
             <div class="campo_formulario">                
                 <label class="col1-2" for="password">Nuevo password :</label>

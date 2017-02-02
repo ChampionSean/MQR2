@@ -43,7 +43,7 @@
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Admin <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
 							
-							<li><a href="/IngeSoft2/logout"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Salir</a></li>
+							<li><a href="/HQR/logout"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Salir</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -122,7 +122,7 @@ Te pedimos contestar de la manera más honesta y sincera posible ya que no exist
 </p>
 			</div>
 			
-                    <form method="post" action="/IngeSoft2/empleado/pruebaR">
+                    <form method="post" action="/HQR/empleado/pruebaR">
 				<div class="panel panel-default">
 					<div class="panel-body tabs">
 						<ul class="nav nav-tabs">

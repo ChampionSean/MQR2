@@ -243,7 +243,7 @@ body, html {
 
 <!-- Container (Contact Section) -->
 <div class="w3-content w3-container w3-padding-64">
-    <form action="/IngeSoft2/comentario" method="POST">
+    <form action="/HQR/comentario" method="POST">
   <h3 class="w3-center">Contactanos</h3>
   <p class="w3-center"><em>Queremos conocerte!</em></p>
 

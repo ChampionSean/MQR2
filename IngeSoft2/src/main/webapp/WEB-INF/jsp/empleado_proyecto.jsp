@@ -52,7 +52,7 @@
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> ${username} <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
 							
-							<li><a href="/IngeSoft2/logout"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Salir</a></li>
+							<li><a href="/HQR/logout"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Salir</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -116,7 +116,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading"><svg class="glyph stroked male user "><use xlink:href="#stroked-male-user"/></svg> Información</div>
 					<div class="panel-body">
-						<form class="form-horizontal" method="POST" action="/IngeSoft2/modificaProyecto">
+						<form class="form-horizontal" method="POST" action="/HQR/modificaProyecto">
 							<fieldset>
 								<!-- Name input-->
                                                                <h2> Proyecto: ${proyecto.nombre_proyecto}   </h2>

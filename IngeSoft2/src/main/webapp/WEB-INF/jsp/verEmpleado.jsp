@@ -53,7 +53,7 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">Usuario: ${username}</a></li>
-                <li><a href="/IngeSoft2/salir">Salir</a></li>
+                <li><a href="/HQR/salir">Salir</a></li>
                 
             </ul>
         </div>
