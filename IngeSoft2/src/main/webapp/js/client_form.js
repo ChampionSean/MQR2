@@ -28,7 +28,7 @@ $(function() {
         // Specify that email should be validated
         // by the built-in "email" rule
         email: true,
-        remote:"/IngeSoft2/checkEmail"
+        remote:"/HQR/checkEmail"
       },
       password: {
         required: true,
