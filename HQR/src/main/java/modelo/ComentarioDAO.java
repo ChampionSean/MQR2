@@ -6,6 +6,7 @@
 package modelo;
 
 
+import MapeoBD.Android;
 import MapeoBD.Comentario;
 import MapeoBD.Proyecto;
 import java.util.LinkedList;
@@ -49,6 +50,29 @@ public class ComentarioDAO {
         }
      }
      
+     
+     
+     public void guardarPosicion(Android a){
+      Session session = sessionFactory.openSession();
+        Transaction tx = null;
+        
+        try {
+           tx = session.beginTransaction();
+          
+           session.save(a);
+           
+           tx.commit();
+        }
+        catch (Exception e) {
+           if (tx!=null){
+               tx.rollback();
+           }
+           e.printStackTrace(); 
+        }finally {
+           session.close();
+        }
+     }
+     
      public List<Comentario> getComentarios(){
          Session session = sessionFactory.openSession();
         Transaction tx = null;
@@ -57,6 +81,42 @@ public class ComentarioDAO {
             tx = session.beginTransaction();
             Query query = session.createQuery("from Comentario");
             lista = query.list();
+        }catch(Exception e){
+            e.printStackTrace(); 
+        }finally{
+            session.close();
+        }
+        return lista;   
+     }
+     
+     public List<Android> getPosicion(){
+         Session session = sessionFactory.openSession();
+        Transaction tx = null;
+        List<Android> lista = null;
+        try {
+            tx = session.beginTransaction();
+            Query query = session.createQuery("from Android");
+            lista = query.list();
+        }catch(Exception e){
+            e.printStackTrace(); 
+        }finally{
+            session.close();
+        }
+        return lista;   
+     }
+     
+     public List<Android> BorrarPosicion(){
+         Session session = sessionFactory.openSession();
+        Transaction tx = null;
+        List<Android> lista = null;
+        try {
+            tx = session.beginTransaction();
+            Query query = session.createQuery("from Android");
+            lista = query.list();
+            for(Android b:lista){
+                session.delete(b);
+            }
+            tx.commit();
         }catch(Exception e){
             e.printStackTrace(); 
         }finally{

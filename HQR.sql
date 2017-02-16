@@ -3,6 +3,12 @@
 --tabla persona
 
 
+create table "android"
+	("id" bigserial not null,
+	 "lat" varchar(250),	
+     "lon" varchar(250)
+     );
+
 create table "comentario"
   ( "id" bigserial not null,
     "nombre" character varying(150) not null,
@@ -220,6 +226,7 @@ ALTER TABLE pregunta_prueba ADD PRIMARY KEY(id);
 ALTER TABLE empleado_proyecto ADD PRIMARY KEY(id);
 ALTER TABLE prueba_empleado ADD PRIMARY KEY(id);
 ALTER TABLE prueba_cliente ADD PRIMARY KEY(id);
+ALTER TABLE android ADD PRIMARY KEY(id);
 
 -- UNIQUE
 ALTER TABLE persona ADD  UNIQUE (correo);

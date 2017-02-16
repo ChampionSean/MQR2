@@ -26,6 +26,7 @@
         <property name="dataSource" ref="dataSource"/>
         <property name="annotatedClasses">
             <list>
+                <value>MapeoBD.Android</value>
                 <value>MapeoBD.Cliente</value>        
                 <value>MapeoBD.Proyecto</value>        
                 <value>MapeoBD.Empleado</value>  

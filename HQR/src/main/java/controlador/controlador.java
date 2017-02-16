@@ -368,6 +368,10 @@ public ModelAndView home(ModelMap model, HttpServletRequest a, RedirectAttribute
     
     
     
+  
+    
+    
+    
      @RequestMapping(value = "/administrador/modificarCliente", method = RequestMethod.POST)
     public ModelAndView modificarCliente(ModelMap model,HttpServletRequest request){
 

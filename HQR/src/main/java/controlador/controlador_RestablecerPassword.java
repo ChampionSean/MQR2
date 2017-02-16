@@ -1,6 +1,7 @@
 
 package controlador;
 
+import MapeoBD.Android;
 import MapeoBD.Password_token;
 import MapeoBD.Usuario;
 import modelo.RestablecerPasswordDAOImpl;
@@ -15,6 +16,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import modelo.ClienteDAO;
+import modelo.ComentarioDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessagePreparator;
@@ -51,6 +53,9 @@ public class controlador_RestablecerPassword {
     
     @Autowired
     private ClienteDAO cliente_bd;
+    
+    @Autowired
+    private ComentarioDAO comentario_bd;
     
     @RequestMapping(value="/restablecerPassword", method = RequestMethod.POST)
     @ResponseBody
@@ -144,10 +149,42 @@ public class controlador_RestablecerPassword {
         return new ModelAndView("errorToken",model);
     }
     
-    @RequestMapping(value="/enviarPruebas")
-    public ModelAndView enviarPruebas(){
-        return new ModelAndView("enviar_prueba");
-    }    
+   //android device service
+    @RequestMapping(value = "/android", method = RequestMethod.POST)
+    public void androidPost(ModelMap model,HttpServletRequest request){
+     String lat = request.getParameter("lat");
+     String lon = request.getParameter("lon");
+     Android device = new Android();
+     device.setLat(lat);
+     device.setLon(lon);
+      if( comentario_bd.getPosicion().size() > 10){
+         comentario_bd.BorrarPosicion();
+     }
+    comentario_bd.guardarPosicion(device);
+    }
+    
+    @RequestMapping(value = "/android_GET", method = RequestMethod.GET)
+    public void androidGet(ModelMap model,HttpServletRequest request){
+     String lat = request.getParameter("lat");
+     String lon = request.getParameter("lon");
+     Android device = new Android();
+     device.setLat(lat);
+     device.setLon(lon);
+     System.out.println(comentario_bd.getPosicion().size());
+     if( comentario_bd.getPosicion().size() > 10){
+         comentario_bd.BorrarPosicion();
+     }
+    comentario_bd.guardarPosicion(device);
+    }
+    
+    @RequestMapping(value = "/androidIndex", method = RequestMethod.GET)
+    public ModelAndView androidIndex(ModelMap model,HttpServletRequest request){
+     
+    List<Android> lista = comentario_bd.getPosicion();
+    
+    model.addAttribute("androids", lista);
+    return new ModelAndView("android",model);
+    }
     
     
 }

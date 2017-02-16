@@ -5,7 +5,7 @@
 -- Dumped from database version 9.5.4
 -- Dumped by pg_dump version 9.5.4
 
--- Started on 2017-02-01 17:39:31
+-- Started on 2017-02-15 21:52:59
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -24,7 +24,7 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- TOC entry 2321 (class 0 OID 0)
+-- TOC entry 2333 (class 0 OID 0)
 -- Dependencies: 1
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
 --
@@ -37,6 +37,44 @@ SET search_path = public, pg_catalog;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
+
+--
+-- TOC entry 219 (class 1259 OID 21882)
+-- Name: android; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE android (
+    id bigint NOT NULL,
+    lat character varying(250),
+    lon character varying(250)
+);
+
+
+ALTER TABLE android OWNER TO postgres;
+
+--
+-- TOC entry 218 (class 1259 OID 21880)
+-- Name: android_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE android_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE android_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2334 (class 0 OID 0)
+-- Dependencies: 218
+-- Name: android_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE android_id_seq OWNED BY android.id;
+
 
 --
 -- TOC entry 186 (class 1259 OID 19570)
@@ -85,7 +123,7 @@ CREATE SEQUENCE cliente_empleado_cliente_id_seq
 ALTER TABLE cliente_empleado_cliente_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2322 (class 0 OID 0)
+-- TOC entry 2335 (class 0 OID 0)
 -- Dependencies: 215
 -- Name: cliente_empleado_cliente_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -109,7 +147,7 @@ CREATE SEQUENCE cliente_empleado_empleado_id_seq
 ALTER TABLE cliente_empleado_empleado_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2323 (class 0 OID 0)
+-- TOC entry 2336 (class 0 OID 0)
 -- Dependencies: 216
 -- Name: cliente_empleado_empleado_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -133,7 +171,7 @@ CREATE SEQUENCE cliente_id_cliente_seq
 ALTER TABLE cliente_id_cliente_seq OWNER TO postgres;
 
 --
--- TOC entry 2324 (class 0 OID 0)
+-- TOC entry 2337 (class 0 OID 0)
 -- Dependencies: 185
 -- Name: cliente_id_cliente_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -172,7 +210,7 @@ CREATE SEQUENCE comentario_id_seq
 ALTER TABLE comentario_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2325 (class 0 OID 0)
+-- TOC entry 2338 (class 0 OID 0)
 -- Dependencies: 181
 -- Name: comentario_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -223,7 +261,7 @@ CREATE SEQUENCE empleado_id_empleado_seq
 ALTER TABLE empleado_id_empleado_seq OWNER TO postgres;
 
 --
--- TOC entry 2326 (class 0 OID 0)
+-- TOC entry 2339 (class 0 OID 0)
 -- Dependencies: 187
 -- Name: empleado_id_empleado_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -262,7 +300,7 @@ CREATE SEQUENCE empleado_proyecto_id_seq
 ALTER TABLE empleado_proyecto_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2327 (class 0 OID 0)
+-- TOC entry 2340 (class 0 OID 0)
 -- Dependencies: 189
 -- Name: empleado_proyecto_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -301,7 +339,7 @@ CREATE SEQUENCE password_token_id_password_token_seq
 ALTER TABLE password_token_id_password_token_seq OWNER TO postgres;
 
 --
--- TOC entry 2328 (class 0 OID 0)
+-- TOC entry 2341 (class 0 OID 0)
 -- Dependencies: 191
 -- Name: password_token_id_password_token_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -344,7 +382,7 @@ CREATE SEQUENCE persona_id_persona_seq
 ALTER TABLE persona_id_persona_seq OWNER TO postgres;
 
 --
--- TOC entry 2329 (class 0 OID 0)
+-- TOC entry 2342 (class 0 OID 0)
 -- Dependencies: 183
 -- Name: persona_id_persona_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -382,7 +420,7 @@ CREATE SEQUENCE pregunta_id_pregunta_seq
 ALTER TABLE pregunta_id_pregunta_seq OWNER TO postgres;
 
 --
--- TOC entry 2330 (class 0 OID 0)
+-- TOC entry 2343 (class 0 OID 0)
 -- Dependencies: 193
 -- Name: pregunta_id_pregunta_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -421,7 +459,7 @@ CREATE SEQUENCE pregunta_prueba_id_seq
 ALTER TABLE pregunta_prueba_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2331 (class 0 OID 0)
+-- TOC entry 2344 (class 0 OID 0)
 -- Dependencies: 195
 -- Name: pregunta_prueba_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -460,7 +498,7 @@ CREATE SEQUENCE pregunta_respuesta_id_pregunta_respuesta_seq
 ALTER TABLE pregunta_respuesta_id_pregunta_respuesta_seq OWNER TO postgres;
 
 --
--- TOC entry 2332 (class 0 OID 0)
+-- TOC entry 2345 (class 0 OID 0)
 -- Dependencies: 197
 -- Name: pregunta_respuesta_id_pregunta_respuesta_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -502,7 +540,7 @@ CREATE SEQUENCE proyecto_id_proyecto_seq
 ALTER TABLE proyecto_id_proyecto_seq OWNER TO postgres;
 
 --
--- TOC entry 2333 (class 0 OID 0)
+-- TOC entry 2346 (class 0 OID 0)
 -- Dependencies: 199
 -- Name: proyecto_id_proyecto_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -556,7 +594,7 @@ CREATE SEQUENCE prueba_cliente_id_seq
 ALTER TABLE prueba_cliente_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2334 (class 0 OID 0)
+-- TOC entry 2347 (class 0 OID 0)
 -- Dependencies: 203
 -- Name: prueba_cliente_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -596,7 +634,7 @@ CREATE SEQUENCE prueba_empleado_id_seq
 ALTER TABLE prueba_empleado_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2335 (class 0 OID 0)
+-- TOC entry 2348 (class 0 OID 0)
 -- Dependencies: 207
 -- Name: prueba_empleado_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -620,7 +658,7 @@ CREATE SEQUENCE prueba_id_prueba_seq
 ALTER TABLE prueba_id_prueba_seq OWNER TO postgres;
 
 --
--- TOC entry 2336 (class 0 OID 0)
+-- TOC entry 2349 (class 0 OID 0)
 -- Dependencies: 201
 -- Name: prueba_id_prueba_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -661,7 +699,7 @@ CREATE SEQUENCE prueba_proyecto_id_prueba_proyecto_seq
 ALTER TABLE prueba_proyecto_id_prueba_proyecto_seq OWNER TO postgres;
 
 --
--- TOC entry 2337 (class 0 OID 0)
+-- TOC entry 2350 (class 0 OID 0)
 -- Dependencies: 205
 -- Name: prueba_proyecto_id_prueba_proyecto_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -713,7 +751,7 @@ CREATE SEQUENCE respuesta_empleado_id_seq
 ALTER TABLE respuesta_empleado_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2338 (class 0 OID 0)
+-- TOC entry 2351 (class 0 OID 0)
 -- Dependencies: 211
 -- Name: respuesta_empleado_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -737,7 +775,7 @@ CREATE SEQUENCE respuesta_id_respuesta_seq
 ALTER TABLE respuesta_id_respuesta_seq OWNER TO postgres;
 
 --
--- TOC entry 2339 (class 0 OID 0)
+-- TOC entry 2352 (class 0 OID 0)
 -- Dependencies: 209
 -- Name: respuesta_id_respuesta_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -776,7 +814,7 @@ CREATE SEQUENCE usuario_id_usuario_seq
 ALTER TABLE usuario_id_usuario_seq OWNER TO postgres;
 
 --
--- TOC entry 2340 (class 0 OID 0)
+-- TOC entry 2353 (class 0 OID 0)
 -- Dependencies: 213
 -- Name: usuario_id_usuario_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -785,7 +823,15 @@ ALTER SEQUENCE usuario_id_usuario_seq OWNED BY usuario.id_usuario;
 
 
 --
--- TOC entry 2089 (class 2604 OID 19573)
+-- TOC entry 2113 (class 2604 OID 21885)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY android ALTER COLUMN id SET DEFAULT nextval('android_id_seq'::regclass);
+
+
+--
+-- TOC entry 2096 (class 2604 OID 19573)
 -- Name: id_cliente; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -793,7 +839,7 @@ ALTER TABLE ONLY cliente ALTER COLUMN id_cliente SET DEFAULT nextval('cliente_id
 
 
 --
--- TOC entry 2104 (class 2604 OID 19668)
+-- TOC entry 2111 (class 2604 OID 19668)
 -- Name: cliente_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -801,7 +847,7 @@ ALTER TABLE ONLY cliente_empleado ALTER COLUMN cliente_id SET DEFAULT nextval('c
 
 
 --
--- TOC entry 2105 (class 2604 OID 19669)
+-- TOC entry 2112 (class 2604 OID 19669)
 -- Name: empleado_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -809,7 +855,7 @@ ALTER TABLE ONLY cliente_empleado ALTER COLUMN empleado_id SET DEFAULT nextval('
 
 
 --
--- TOC entry 2087 (class 2604 OID 19558)
+-- TOC entry 2094 (class 2604 OID 19558)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -817,7 +863,7 @@ ALTER TABLE ONLY comentario ALTER COLUMN id SET DEFAULT nextval('comentario_id_s
 
 
 --
--- TOC entry 2090 (class 2604 OID 19579)
+-- TOC entry 2097 (class 2604 OID 19579)
 -- Name: id_empleado; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -825,7 +871,7 @@ ALTER TABLE ONLY empleado ALTER COLUMN id_empleado SET DEFAULT nextval('empleado
 
 
 --
--- TOC entry 2091 (class 2604 OID 19588)
+-- TOC entry 2098 (class 2604 OID 19588)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -833,7 +879,7 @@ ALTER TABLE ONLY empleado_proyecto ALTER COLUMN id SET DEFAULT nextval('empleado
 
 
 --
--- TOC entry 2092 (class 2604 OID 19594)
+-- TOC entry 2099 (class 2604 OID 19594)
 -- Name: id_password_token; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -841,7 +887,7 @@ ALTER TABLE ONLY password_token ALTER COLUMN id_password_token SET DEFAULT nextv
 
 
 --
--- TOC entry 2088 (class 2604 OID 19567)
+-- TOC entry 2095 (class 2604 OID 19567)
 -- Name: id_persona; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -849,7 +895,7 @@ ALTER TABLE ONLY persona ALTER COLUMN id_persona SET DEFAULT nextval('persona_id
 
 
 --
--- TOC entry 2093 (class 2604 OID 19600)
+-- TOC entry 2100 (class 2604 OID 19600)
 -- Name: id_pregunta; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -857,7 +903,7 @@ ALTER TABLE ONLY pregunta ALTER COLUMN id_pregunta SET DEFAULT nextval('pregunta
 
 
 --
--- TOC entry 2094 (class 2604 OID 19606)
+-- TOC entry 2101 (class 2604 OID 19606)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -865,7 +911,7 @@ ALTER TABLE ONLY pregunta_prueba ALTER COLUMN id SET DEFAULT nextval('pregunta_p
 
 
 --
--- TOC entry 2095 (class 2604 OID 19612)
+-- TOC entry 2102 (class 2604 OID 19612)
 -- Name: id_pregunta_respuesta; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -873,7 +919,7 @@ ALTER TABLE ONLY pregunta_respuesta ALTER COLUMN id_pregunta_respuesta SET DEFAU
 
 
 --
--- TOC entry 2096 (class 2604 OID 19618)
+-- TOC entry 2103 (class 2604 OID 19618)
 -- Name: id_proyecto; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -881,7 +927,7 @@ ALTER TABLE ONLY proyecto ALTER COLUMN id_proyecto SET DEFAULT nextval('proyecto
 
 
 --
--- TOC entry 2097 (class 2604 OID 19624)
+-- TOC entry 2104 (class 2604 OID 19624)
 -- Name: id_prueba; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -889,7 +935,7 @@ ALTER TABLE ONLY prueba ALTER COLUMN id_prueba SET DEFAULT nextval('prueba_id_pr
 
 
 --
--- TOC entry 2098 (class 2604 OID 19630)
+-- TOC entry 2105 (class 2604 OID 19630)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -897,7 +943,7 @@ ALTER TABLE ONLY prueba_cliente ALTER COLUMN id SET DEFAULT nextval('prueba_clie
 
 
 --
--- TOC entry 2100 (class 2604 OID 19642)
+-- TOC entry 2107 (class 2604 OID 19642)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -905,7 +951,7 @@ ALTER TABLE ONLY prueba_empleado ALTER COLUMN id SET DEFAULT nextval('prueba_emp
 
 
 --
--- TOC entry 2099 (class 2604 OID 19636)
+-- TOC entry 2106 (class 2604 OID 19636)
 -- Name: id_prueba_proyecto; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -913,7 +959,7 @@ ALTER TABLE ONLY prueba_proyecto ALTER COLUMN id_prueba_proyecto SET DEFAULT nex
 
 
 --
--- TOC entry 2101 (class 2604 OID 19648)
+-- TOC entry 2108 (class 2604 OID 19648)
 -- Name: id_respuesta; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -921,7 +967,7 @@ ALTER TABLE ONLY respuesta ALTER COLUMN id_respuesta SET DEFAULT nextval('respue
 
 
 --
--- TOC entry 2102 (class 2604 OID 19654)
+-- TOC entry 2109 (class 2604 OID 19654)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -929,7 +975,7 @@ ALTER TABLE ONLY respuesta_empleado ALTER COLUMN id SET DEFAULT nextval('respues
 
 
 --
--- TOC entry 2103 (class 2604 OID 19660)
+-- TOC entry 2110 (class 2604 OID 19660)
 -- Name: id_usuario; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -937,7 +983,26 @@ ALTER TABLE ONLY usuario ALTER COLUMN id_usuario SET DEFAULT nextval('usuario_id
 
 
 --
--- TOC entry 2282 (class 0 OID 19570)
+-- TOC entry 2325 (class 0 OID 21882)
+-- Dependencies: 219
+-- Data for Name: android; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY android (id, lat, lon) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2354 (class 0 OID 0)
+-- Dependencies: 218
+-- Name: android_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('android_id_seq', 20, true);
+
+
+--
+-- TOC entry 2292 (class 0 OID 19570)
 -- Dependencies: 186
 -- Data for Name: cliente; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -945,11 +1010,12 @@ ALTER TABLE ONLY usuario ALTER COLUMN id_usuario SET DEFAULT nextval('usuario_id
 COPY cliente (id_cliente, persona_id, area, puesto, nombre_empresa, habilitado) FROM stdin;
 1	1	Directivos	Director General	Consultoria Human Quality Research	1
 2	2	Directivos	Director General	Consultoria Human Quality Research	1
+3	3	55	ggg	ggg	1
 \.
 
 
 --
--- TOC entry 2313 (class 0 OID 19665)
+-- TOC entry 2323 (class 0 OID 19665)
 -- Dependencies: 217
 -- Data for Name: cliente_empleado; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -959,7 +1025,7 @@ COPY cliente_empleado (id_cliente_empleado, cliente_id, empleado_id) FROM stdin;
 
 
 --
--- TOC entry 2341 (class 0 OID 0)
+-- TOC entry 2355 (class 0 OID 0)
 -- Dependencies: 215
 -- Name: cliente_empleado_cliente_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -968,7 +1034,7 @@ SELECT pg_catalog.setval('cliente_empleado_cliente_id_seq', 1, false);
 
 
 --
--- TOC entry 2342 (class 0 OID 0)
+-- TOC entry 2356 (class 0 OID 0)
 -- Dependencies: 216
 -- Name: cliente_empleado_empleado_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -977,16 +1043,16 @@ SELECT pg_catalog.setval('cliente_empleado_empleado_id_seq', 1, false);
 
 
 --
--- TOC entry 2343 (class 0 OID 0)
+-- TOC entry 2357 (class 0 OID 0)
 -- Dependencies: 185
 -- Name: cliente_id_cliente_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('cliente_id_cliente_seq', 2, true);
+SELECT pg_catalog.setval('cliente_id_cliente_seq', 3, true);
 
 
 --
--- TOC entry 2278 (class 0 OID 19555)
+-- TOC entry 2288 (class 0 OID 19555)
 -- Dependencies: 182
 -- Data for Name: comentario; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -996,7 +1062,7 @@ COPY comentario (id, nombre, correo, comentario) FROM stdin;
 
 
 --
--- TOC entry 2344 (class 0 OID 0)
+-- TOC entry 2358 (class 0 OID 0)
 -- Dependencies: 181
 -- Name: comentario_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1005,7 +1071,7 @@ SELECT pg_catalog.setval('comentario_id_seq', 1, false);
 
 
 --
--- TOC entry 2284 (class 0 OID 19576)
+-- TOC entry 2294 (class 0 OID 19576)
 -- Dependencies: 188
 -- Data for Name: empleado; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1015,7 +1081,7 @@ COPY empleado (id_empleado, persona_id, direccion, horas_x_semana, carrera, esta
 
 
 --
--- TOC entry 2345 (class 0 OID 0)
+-- TOC entry 2359 (class 0 OID 0)
 -- Dependencies: 187
 -- Name: empleado_id_empleado_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1024,7 +1090,7 @@ SELECT pg_catalog.setval('empleado_id_empleado_seq', 1, false);
 
 
 --
--- TOC entry 2286 (class 0 OID 19585)
+-- TOC entry 2296 (class 0 OID 19585)
 -- Dependencies: 190
 -- Data for Name: empleado_proyecto; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1034,7 +1100,7 @@ COPY empleado_proyecto (id, empleado_id, proyecto_id, habilitado) FROM stdin;
 
 
 --
--- TOC entry 2346 (class 0 OID 0)
+-- TOC entry 2360 (class 0 OID 0)
 -- Dependencies: 189
 -- Name: empleado_proyecto_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1043,7 +1109,7 @@ SELECT pg_catalog.setval('empleado_proyecto_id_seq', 1, false);
 
 
 --
--- TOC entry 2288 (class 0 OID 19591)
+-- TOC entry 2298 (class 0 OID 19591)
 -- Dependencies: 192
 -- Data for Name: password_token; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1053,7 +1119,7 @@ COPY password_token (id_password_token, usuario_password_token, token_password_t
 
 
 --
--- TOC entry 2347 (class 0 OID 0)
+-- TOC entry 2361 (class 0 OID 0)
 -- Dependencies: 191
 -- Name: password_token_id_password_token_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1062,7 +1128,7 @@ SELECT pg_catalog.setval('password_token_id_password_token_seq', 1, false);
 
 
 --
--- TOC entry 2280 (class 0 OID 19564)
+-- TOC entry 2290 (class 0 OID 19564)
 -- Dependencies: 184
 -- Data for Name: persona; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1070,20 +1136,21 @@ SELECT pg_catalog.setval('password_token_id_password_token_seq', 1, false);
 COPY persona (id_persona, correo, nombre, apellido_paterno, apellido_materno, telefono_local, telefono_movil, usuario_id) FROM stdin;
 1	juanmanuel_s_n@hotmail.com	Marco	Estrada	Robles	57627914	5568709342	1
 2	celara91@gmail.com	Marco	Estrada	Robles	57627914	5568709342	2
+3	gg@gg.com	ggg	gg		55	55	3
 \.
 
 
 --
--- TOC entry 2348 (class 0 OID 0)
+-- TOC entry 2362 (class 0 OID 0)
 -- Dependencies: 183
 -- Name: persona_id_persona_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('persona_id_persona_seq', 2, true);
+SELECT pg_catalog.setval('persona_id_persona_seq', 3, true);
 
 
 --
--- TOC entry 2290 (class 0 OID 19597)
+-- TOC entry 2300 (class 0 OID 19597)
 -- Dependencies: 194
 -- Data for Name: pregunta; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1143,7 +1210,7 @@ COPY pregunta (id_pregunta, nombre_pregunta, habilitado) FROM stdin;
 
 
 --
--- TOC entry 2349 (class 0 OID 0)
+-- TOC entry 2363 (class 0 OID 0)
 -- Dependencies: 193
 -- Name: pregunta_id_pregunta_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1152,7 +1219,7 @@ SELECT pg_catalog.setval('pregunta_id_pregunta_seq', 50, true);
 
 
 --
--- TOC entry 2292 (class 0 OID 19603)
+-- TOC entry 2302 (class 0 OID 19603)
 -- Dependencies: 196
 -- Data for Name: pregunta_prueba; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1212,7 +1279,7 @@ COPY pregunta_prueba (id, pregunta_id, prueba_id, numero_pregunta) FROM stdin;
 
 
 --
--- TOC entry 2350 (class 0 OID 0)
+-- TOC entry 2364 (class 0 OID 0)
 -- Dependencies: 195
 -- Name: pregunta_prueba_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1221,7 +1288,7 @@ SELECT pg_catalog.setval('pregunta_prueba_id_seq', 50, true);
 
 
 --
--- TOC entry 2294 (class 0 OID 19609)
+-- TOC entry 2304 (class 0 OID 19609)
 -- Dependencies: 198
 -- Data for Name: pregunta_respuesta; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1501,7 +1568,7 @@ COPY pregunta_respuesta (id_pregunta_respuesta, pregunta_id, respuesta_id, punta
 
 
 --
--- TOC entry 2351 (class 0 OID 0)
+-- TOC entry 2365 (class 0 OID 0)
 -- Dependencies: 197
 -- Name: pregunta_respuesta_id_pregunta_respuesta_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1510,7 +1577,7 @@ SELECT pg_catalog.setval('pregunta_respuesta_id_pregunta_respuesta_seq', 270, tr
 
 
 --
--- TOC entry 2296 (class 0 OID 19615)
+-- TOC entry 2306 (class 0 OID 19615)
 -- Dependencies: 200
 -- Data for Name: proyecto; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1520,7 +1587,7 @@ COPY proyecto (id_proyecto, cliente_id, nombre_proyecto, descripcion, fecha_inic
 
 
 --
--- TOC entry 2352 (class 0 OID 0)
+-- TOC entry 2366 (class 0 OID 0)
 -- Dependencies: 199
 -- Name: proyecto_id_proyecto_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1529,7 +1596,7 @@ SELECT pg_catalog.setval('proyecto_id_proyecto_seq', 1, false);
 
 
 --
--- TOC entry 2298 (class 0 OID 19621)
+-- TOC entry 2308 (class 0 OID 19621)
 -- Dependencies: 202
 -- Data for Name: prueba; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1541,7 +1608,7 @@ COPY prueba (id_prueba, nombre_prueba, descripcion_prueba, habilitado) FROM stdi
 
 
 --
--- TOC entry 2300 (class 0 OID 19627)
+-- TOC entry 2310 (class 0 OID 19627)
 -- Dependencies: 204
 -- Data for Name: prueba_cliente; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1551,7 +1618,7 @@ COPY prueba_cliente (id, prueba_id, cliente_id, habilitado) FROM stdin;
 
 
 --
--- TOC entry 2353 (class 0 OID 0)
+-- TOC entry 2367 (class 0 OID 0)
 -- Dependencies: 203
 -- Name: prueba_cliente_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1560,7 +1627,7 @@ SELECT pg_catalog.setval('prueba_cliente_id_seq', 1, false);
 
 
 --
--- TOC entry 2304 (class 0 OID 19639)
+-- TOC entry 2314 (class 0 OID 19639)
 -- Dependencies: 208
 -- Data for Name: prueba_empleado; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1570,7 +1637,7 @@ COPY prueba_empleado (id, empleado_id, prueba_id, puntaje_prueba, fecha_prueba) 
 
 
 --
--- TOC entry 2354 (class 0 OID 0)
+-- TOC entry 2368 (class 0 OID 0)
 -- Dependencies: 207
 -- Name: prueba_empleado_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1579,7 +1646,7 @@ SELECT pg_catalog.setval('prueba_empleado_id_seq', 1, false);
 
 
 --
--- TOC entry 2355 (class 0 OID 0)
+-- TOC entry 2369 (class 0 OID 0)
 -- Dependencies: 201
 -- Name: prueba_id_prueba_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1588,7 +1655,7 @@ SELECT pg_catalog.setval('prueba_id_prueba_seq', 2, true);
 
 
 --
--- TOC entry 2302 (class 0 OID 19633)
+-- TOC entry 2312 (class 0 OID 19633)
 -- Dependencies: 206
 -- Data for Name: prueba_proyecto; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1598,7 +1665,7 @@ COPY prueba_proyecto (id_prueba_proyecto, prueba_id, proyecto_id, puntaje_prueba
 
 
 --
--- TOC entry 2356 (class 0 OID 0)
+-- TOC entry 2370 (class 0 OID 0)
 -- Dependencies: 205
 -- Name: prueba_proyecto_id_prueba_proyecto_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1607,7 +1674,7 @@ SELECT pg_catalog.setval('prueba_proyecto_id_prueba_proyecto_seq', 1, false);
 
 
 --
--- TOC entry 2306 (class 0 OID 19645)
+-- TOC entry 2316 (class 0 OID 19645)
 -- Dependencies: 210
 -- Data for Name: respuesta; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1629,7 +1696,7 @@ COPY respuesta (id_respuesta, nombre_respuesta, habilitado) FROM stdin;
 
 
 --
--- TOC entry 2308 (class 0 OID 19651)
+-- TOC entry 2318 (class 0 OID 19651)
 -- Dependencies: 212
 -- Data for Name: respuesta_empleado; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1639,7 +1706,7 @@ COPY respuesta_empleado (id, pregunta_respuesta_id, empleado_id) FROM stdin;
 
 
 --
--- TOC entry 2357 (class 0 OID 0)
+-- TOC entry 2371 (class 0 OID 0)
 -- Dependencies: 211
 -- Name: respuesta_empleado_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1648,7 +1715,7 @@ SELECT pg_catalog.setval('respuesta_empleado_id_seq', 1, false);
 
 
 --
--- TOC entry 2358 (class 0 OID 0)
+-- TOC entry 2372 (class 0 OID 0)
 -- Dependencies: 209
 -- Name: respuesta_id_respuesta_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1657,7 +1724,7 @@ SELECT pg_catalog.setval('respuesta_id_respuesta_seq', 12, true);
 
 
 --
--- TOC entry 2310 (class 0 OID 19657)
+-- TOC entry 2320 (class 0 OID 19657)
 -- Dependencies: 214
 -- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1665,20 +1732,30 @@ SELECT pg_catalog.setval('respuesta_id_respuesta_seq', 12, true);
 COPY usuario (id_usuario, login_usuario, password_usuario, rol_usuario) FROM stdin;
 1	admin	4c2af4fe40426094a2ec8c6584999a00	ROLE_ADMIN
 2	admin	4c2af4fe40426094a2ec8c6584999a00	ROLE_ADMIN
+3	Nombre_Usuario	a98f6f64e6cdfac22ab2ffd15a7241e3	ROLE_CLIENTE
 \.
 
 
 --
--- TOC entry 2359 (class 0 OID 0)
+-- TOC entry 2373 (class 0 OID 0)
 -- Dependencies: 213
 -- Name: usuario_id_usuario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('usuario_id_usuario_seq', 2, true);
+SELECT pg_catalog.setval('usuario_id_usuario_seq', 3, true);
 
 
 --
--- TOC entry 2143 (class 2606 OID 19695)
+-- TOC entry 2153 (class 2606 OID 21890)
+-- Name: android_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY android
+    ADD CONSTRAINT android_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2151 (class 2606 OID 19695)
 -- Name: cliente_empleado_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1687,7 +1764,7 @@ ALTER TABLE ONLY cliente_empleado
 
 
 --
--- TOC entry 2113 (class 2606 OID 19675)
+-- TOC entry 2121 (class 2606 OID 19675)
 -- Name: cliente_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1696,7 +1773,7 @@ ALTER TABLE ONLY cliente
 
 
 --
--- TOC entry 2107 (class 2606 OID 19671)
+-- TOC entry 2115 (class 2606 OID 19671)
 -- Name: comentario_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1705,7 +1782,7 @@ ALTER TABLE ONLY comentario
 
 
 --
--- TOC entry 2115 (class 2606 OID 19677)
+-- TOC entry 2123 (class 2606 OID 19677)
 -- Name: empleado_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1714,7 +1791,7 @@ ALTER TABLE ONLY empleado
 
 
 --
--- TOC entry 2117 (class 2606 OID 19701)
+-- TOC entry 2125 (class 2606 OID 19701)
 -- Name: empleado_proyecto_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1723,7 +1800,7 @@ ALTER TABLE ONLY empleado_proyecto
 
 
 --
--- TOC entry 2119 (class 2606 OID 19679)
+-- TOC entry 2127 (class 2606 OID 19679)
 -- Name: password_token_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1732,7 +1809,7 @@ ALTER TABLE ONLY password_token
 
 
 --
--- TOC entry 2109 (class 2606 OID 19707)
+-- TOC entry 2117 (class 2606 OID 19707)
 -- Name: persona_correo_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1741,7 +1818,7 @@ ALTER TABLE ONLY persona
 
 
 --
--- TOC entry 2111 (class 2606 OID 19673)
+-- TOC entry 2119 (class 2606 OID 19673)
 -- Name: persona_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1750,7 +1827,7 @@ ALTER TABLE ONLY persona
 
 
 --
--- TOC entry 2121 (class 2606 OID 19681)
+-- TOC entry 2129 (class 2606 OID 19681)
 -- Name: pregunta_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1759,7 +1836,7 @@ ALTER TABLE ONLY pregunta
 
 
 --
--- TOC entry 2123 (class 2606 OID 19699)
+-- TOC entry 2131 (class 2606 OID 19699)
 -- Name: pregunta_prueba_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1768,7 +1845,7 @@ ALTER TABLE ONLY pregunta_prueba
 
 
 --
--- TOC entry 2125 (class 2606 OID 19683)
+-- TOC entry 2133 (class 2606 OID 19683)
 -- Name: pregunta_respuesta_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1777,7 +1854,7 @@ ALTER TABLE ONLY pregunta_respuesta
 
 
 --
--- TOC entry 2127 (class 2606 OID 19685)
+-- TOC entry 2135 (class 2606 OID 19685)
 -- Name: proyecto_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1786,7 +1863,7 @@ ALTER TABLE ONLY proyecto
 
 
 --
--- TOC entry 2131 (class 2606 OID 19705)
+-- TOC entry 2139 (class 2606 OID 19705)
 -- Name: prueba_cliente_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1795,7 +1872,7 @@ ALTER TABLE ONLY prueba_cliente
 
 
 --
--- TOC entry 2135 (class 2606 OID 19703)
+-- TOC entry 2143 (class 2606 OID 19703)
 -- Name: prueba_empleado_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1804,7 +1881,7 @@ ALTER TABLE ONLY prueba_empleado
 
 
 --
--- TOC entry 2129 (class 2606 OID 19687)
+-- TOC entry 2137 (class 2606 OID 19687)
 -- Name: prueba_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1813,7 +1890,7 @@ ALTER TABLE ONLY prueba
 
 
 --
--- TOC entry 2133 (class 2606 OID 19689)
+-- TOC entry 2141 (class 2606 OID 19689)
 -- Name: prueba_proyecto_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1822,7 +1899,7 @@ ALTER TABLE ONLY prueba_proyecto
 
 
 --
--- TOC entry 2139 (class 2606 OID 19697)
+-- TOC entry 2147 (class 2606 OID 19697)
 -- Name: respuesta_empleado_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1831,7 +1908,7 @@ ALTER TABLE ONLY respuesta_empleado
 
 
 --
--- TOC entry 2137 (class 2606 OID 19691)
+-- TOC entry 2145 (class 2606 OID 19691)
 -- Name: respuesta_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1840,7 +1917,7 @@ ALTER TABLE ONLY respuesta
 
 
 --
--- TOC entry 2141 (class 2606 OID 19693)
+-- TOC entry 2149 (class 2606 OID 19693)
 -- Name: usuario_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1849,7 +1926,7 @@ ALTER TABLE ONLY usuario
 
 
 --
--- TOC entry 2145 (class 2606 OID 19713)
+-- TOC entry 2155 (class 2606 OID 19713)
 -- Name: cliente_persona_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1858,7 +1935,7 @@ ALTER TABLE ONLY cliente
 
 
 --
--- TOC entry 2146 (class 2606 OID 19718)
+-- TOC entry 2156 (class 2606 OID 19718)
 -- Name: empleado_persona_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1867,7 +1944,7 @@ ALTER TABLE ONLY empleado
 
 
 --
--- TOC entry 2147 (class 2606 OID 19723)
+-- TOC entry 2157 (class 2606 OID 19723)
 -- Name: empleado_proyecto_empleado_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1876,7 +1953,7 @@ ALTER TABLE ONLY empleado_proyecto
 
 
 --
--- TOC entry 2148 (class 2606 OID 19728)
+-- TOC entry 2158 (class 2606 OID 19728)
 -- Name: empleado_proyecto_proyecto_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1885,7 +1962,7 @@ ALTER TABLE ONLY empleado_proyecto
 
 
 --
--- TOC entry 2149 (class 2606 OID 19798)
+-- TOC entry 2159 (class 2606 OID 19798)
 -- Name: password_token_usuario_password_token_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1894,7 +1971,7 @@ ALTER TABLE ONLY password_token
 
 
 --
--- TOC entry 2144 (class 2606 OID 19708)
+-- TOC entry 2154 (class 2606 OID 19708)
 -- Name: persona_usuario_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1903,7 +1980,7 @@ ALTER TABLE ONLY persona
 
 
 --
--- TOC entry 2150 (class 2606 OID 19743)
+-- TOC entry 2160 (class 2606 OID 19743)
 -- Name: pregunta_prueba_pregunta_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1912,7 +1989,7 @@ ALTER TABLE ONLY pregunta_prueba
 
 
 --
--- TOC entry 2151 (class 2606 OID 19748)
+-- TOC entry 2161 (class 2606 OID 19748)
 -- Name: pregunta_prueba_prueba_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1921,7 +1998,7 @@ ALTER TABLE ONLY pregunta_prueba
 
 
 --
--- TOC entry 2152 (class 2606 OID 19733)
+-- TOC entry 2162 (class 2606 OID 19733)
 -- Name: pregunta_respuesta_pregunta_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1930,7 +2007,7 @@ ALTER TABLE ONLY pregunta_respuesta
 
 
 --
--- TOC entry 2153 (class 2606 OID 19738)
+-- TOC entry 2163 (class 2606 OID 19738)
 -- Name: pregunta_respuesta_respuesta_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1939,7 +2016,7 @@ ALTER TABLE ONLY pregunta_respuesta
 
 
 --
--- TOC entry 2154 (class 2606 OID 19753)
+-- TOC entry 2164 (class 2606 OID 19753)
 -- Name: proyecto_cliente_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1948,7 +2025,7 @@ ALTER TABLE ONLY proyecto
 
 
 --
--- TOC entry 2155 (class 2606 OID 19758)
+-- TOC entry 2165 (class 2606 OID 19758)
 -- Name: prueba_cliente_cliente_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1957,7 +2034,7 @@ ALTER TABLE ONLY prueba_cliente
 
 
 --
--- TOC entry 2156 (class 2606 OID 19763)
+-- TOC entry 2166 (class 2606 OID 19763)
 -- Name: prueba_cliente_prueba_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1966,7 +2043,7 @@ ALTER TABLE ONLY prueba_cliente
 
 
 --
--- TOC entry 2159 (class 2606 OID 19778)
+-- TOC entry 2169 (class 2606 OID 19778)
 -- Name: prueba_empleado_empleado_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1975,7 +2052,7 @@ ALTER TABLE ONLY prueba_empleado
 
 
 --
--- TOC entry 2160 (class 2606 OID 19783)
+-- TOC entry 2170 (class 2606 OID 19783)
 -- Name: prueba_empleado_prueba_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1984,7 +2061,7 @@ ALTER TABLE ONLY prueba_empleado
 
 
 --
--- TOC entry 2158 (class 2606 OID 19773)
+-- TOC entry 2168 (class 2606 OID 19773)
 -- Name: prueba_proyecto_proyecto_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1993,7 +2070,7 @@ ALTER TABLE ONLY prueba_proyecto
 
 
 --
--- TOC entry 2157 (class 2606 OID 19768)
+-- TOC entry 2167 (class 2606 OID 19768)
 -- Name: prueba_proyecto_prueba_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -2002,7 +2079,7 @@ ALTER TABLE ONLY prueba_proyecto
 
 
 --
--- TOC entry 2162 (class 2606 OID 19793)
+-- TOC entry 2172 (class 2606 OID 19793)
 -- Name: respuesta_empleado_empleado_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -2011,7 +2088,7 @@ ALTER TABLE ONLY respuesta_empleado
 
 
 --
--- TOC entry 2161 (class 2606 OID 19788)
+-- TOC entry 2171 (class 2606 OID 19788)
 -- Name: respuesta_empleado_pregunta_respuesta_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -2020,7 +2097,7 @@ ALTER TABLE ONLY respuesta_empleado
 
 
 --
--- TOC entry 2320 (class 0 OID 0)
+-- TOC entry 2332 (class 0 OID 0)
 -- Dependencies: 6
 -- Name: public; Type: ACL; Schema: -; Owner: postgres
 --
@@ -2031,7 +2108,7 @@ GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
--- Completed on 2017-02-01 17:39:32
+-- Completed on 2017-02-15 21:53:02
 
 --
 -- PostgreSQL database dump complete
