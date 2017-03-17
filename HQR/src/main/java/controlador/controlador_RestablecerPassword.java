@@ -88,7 +88,7 @@ public class controlador_RestablecerPassword {
  
             @Override
             public void prepare(MimeMessage message) throws Exception {
-                message.setFrom(new InternetAddress("validar.correo.sistema@gmail.com"));
+                message.setFrom(new InternetAddress("hqrmsg@gmail.com"));
                 message.setRecipient(Message.RecipientType.TO,
                         new InternetAddress(correo));
                 message.setText(texto + "\n" + url);

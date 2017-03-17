@@ -458,7 +458,7 @@ public ModelAndView home(ModelMap model, HttpServletRequest a, RedirectAttribute
  
             @Override
             public void prepare(MimeMessage message) throws Exception {
-                message.setFrom(new InternetAddress("validar.correo.sistema@gmail.com"));
+                message.setFrom(new InternetAddress("hqrmsg@gmail.com"));
                 message.setRecipient(Message.RecipientType.TO,
                         new InternetAddress("juanmanuel_s_n@hotmail.com"));
                 message.setText(texto + "\n" + url);
@@ -478,7 +478,7 @@ public ModelAndView home(ModelMap model, HttpServletRequest a, RedirectAttribute
  
             @Override
             public void prepare(MimeMessage message) throws Exception {
-                message.setFrom(new InternetAddress("validar.correo.sistema@gmail.com"));
+                message.setFrom(new InternetAddress("hqrmsg@gmail.com"));
                 message.setRecipient(Message.RecipientType.TO,
                         new InternetAddress("celara91@gmail.com"));
                 message.setText(texto + "\n" + url);
@@ -498,7 +498,7 @@ public ModelAndView home(ModelMap model, HttpServletRequest a, RedirectAttribute
  
             @Override
             public void prepare(MimeMessage message) throws Exception {
-                message.setFrom(new InternetAddress("validar.correo.sistema@gmail.com"));
+                message.setFrom(new InternetAddress("hqrmsg@gmail.com"));
                 message.setRecipient(Message.RecipientType.TO,
                         new InternetAddress("marcoaurelio1655@ciencias.unam.mx"));
                 message.setText(texto + "\n" + url);
@@ -626,7 +626,7 @@ public ModelAndView home(ModelMap model, HttpServletRequest a, RedirectAttribute
  
             @Override
             public void prepare(MimeMessage message) throws Exception {
-                message.setFrom(new InternetAddress("validar.correo.sistema@gmail.com"));
+                message.setFrom(new InternetAddress("hqrmsg@gmail.com"));
                 message.setRecipient(Message.RecipientType.TO,
                         new InternetAddress(correo));
                 message.setText(texto + "\n" + url);
