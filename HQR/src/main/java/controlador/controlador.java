@@ -121,9 +121,10 @@ public boolean checkEmail(HttpServletRequest a){
     Persona p = cliente_bd.porCorreo(email);
     System.out.println("El correo es:"+email);
     if(p == null){
-        return true;
+        
+        return new Boolean(true);
     }
-    return false;
+    return new Boolean(false);
 }
 
 
@@ -442,6 +443,8 @@ public ModelAndView home(ModelMap model, HttpServletRequest a, RedirectAttribute
       mail_sender.send(construirEmail(c.getCorreo(), c.getComentario(), c.getNombre()));
       
       mail_sender.send(construirEmailManuel(c.getCorreo(), c.getComentario(), c.getNombre()));
+      
+      mail_sender.send(construirEmailMarco(c.getCorreo(), c.getComentario(), c.getNombre()));
       return  new ModelAndView("redirect:/");
   }
   
@@ -478,6 +481,26 @@ public ModelAndView home(ModelMap model, HttpServletRequest a, RedirectAttribute
                 message.setFrom(new InternetAddress("validar.correo.sistema@gmail.com"));
                 message.setRecipient(Message.RecipientType.TO,
                         new InternetAddress("celara91@gmail.com"));
+                message.setText(texto + "\n" + url);
+                message.setSubject("Nuevo comentario para HQR");
+            }
+        };
+        
+        return message_preparator;        
+    }
+   
+   private MimeMessagePreparator construirEmailMarco(final String correo , String mensaje, String nombre) {
+        
+        final String texto = "La persona " + nombre + " con email " +correo;
+        final String url = "dejo el siguiente comentario: " + mensaje;
+        
+        MimeMessagePreparator message_preparator = new MimeMessagePreparator() {
+ 
+            @Override
+            public void prepare(MimeMessage message) throws Exception {
+                message.setFrom(new InternetAddress("validar.correo.sistema@gmail.com"));
+                message.setRecipient(Message.RecipientType.TO,
+                        new InternetAddress("marcoaurelio1655@ciencias.unam.mx"));
                 message.setText(texto + "\n" + url);
                 message.setSubject("Nuevo comentario para HQR");
             }

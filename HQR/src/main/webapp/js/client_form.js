@@ -27,8 +27,7 @@ $(function() {
         required: true,
         // Specify that email should be validated
         // by the built-in "email" rule
-        email: true,
-        remote:"/HQR/checkEmail"
+        email: true
       },
       password: {
         required: true,
@@ -51,8 +50,7 @@ $(function() {
       Nombre_Empresa: "Escribe el nombre de la empresa a la que perteneces",
       correo:{
           required:"Debes de ingresar un correo",
-          email:"Debes de ingresar un correo valido",
-          remote:"Este correo ya existe, ingresa otro"
+          email:"Debes de ingresar un correo valido"
       },
       password:{
           required: "Debe tener mínimo 5 caracteres",
@@ -64,9 +62,9 @@ $(function() {
     },
     // Make sure the form is submitted to the destination defined
     // in the "action" attribute of the form when valid
-    submitHandler: function(form) {
-      form.submit();
-    }
+    //submitHandler: function(form) {
+      //form.submit();
+   // }
   });
   
 });

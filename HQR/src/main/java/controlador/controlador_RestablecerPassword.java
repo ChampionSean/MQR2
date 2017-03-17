@@ -4,6 +4,8 @@ package controlador;
 import MapeoBD.Android;
 import MapeoBD.Password_token;
 import MapeoBD.Usuario;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import modelo.RestablecerPasswordDAOImpl;
 import modelo.UsuarioDAO;
 import java.security.Principal;
@@ -11,6 +13,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.UUID;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.mail.Message;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
@@ -123,13 +127,30 @@ public class controlador_RestablecerPassword {
 
     @RequestMapping(value = "/cambiarPassword")
     public String cambiarPassword(@RequestParam String password , @RequestParam String confirmacion_password, Principal principal){
-        Md5PasswordEncoder passwordEncoder = new Md5PasswordEncoder();
-       String  hash_password = passwordEncoder.encodePassword(password, this);        
+        String pass = password;
+       String passwor= null;
+       MessageDigest md;
+        try {
+            md = MessageDigest.getInstance("MD5");
+            md.update(pass.getBytes());
+            byte[] digest = md.digest();
+            StringBuilder sb = new StringBuilder();
+            for (byte b : digest) {
+                sb.append(String.format("%02x", b & 0xff));
+                } 
+            passwor=sb.toString();
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(controlador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        //Md5PasswordEncoder passwordEncoder = new Md5PasswordEncoder();
+       //String  hash_password = passwordEncoder.encodePassword(password, this);        
         //BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
        //String hash_password = passwordEncoder.encode(password) ;
-        usuario_bd.cambiarPassword(Long.parseLong(principal.getName()), hash_password);
+        usuario_bd.cambiarPassword(Long.parseLong(principal.getName()), passwor);
         SecurityContextHolder.getContext().setAuthentication(null);
-        return "index";
+        return "redirect:/login";
     }
     
      @RequestMapping(value="/restablecimientoPassword")

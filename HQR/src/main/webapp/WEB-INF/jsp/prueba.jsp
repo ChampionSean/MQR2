@@ -102,7 +102,7 @@
 				
 				
                 
-                
+                <div id="arriba"></div>
                 
 		
                 
@@ -259,6 +259,7 @@ Te pedimos contestar de la manera más honesta y sincera posible ya que no exist
 				<label for="5">Totalmente de acuerdo</label>
 			
 		</fieldset>
+                                                                    <a href="#arriba">Ir Arriba</a>
 								</div>
 							</div>
 							<div class="tab-pane fade" id="tab2">
@@ -394,6 +395,7 @@ Te pedimos contestar de la manera más honesta y sincera posible ya que no exist
 				<label for="5">Totalmente de acuerdo</label>
 			
 		</fieldset>
+                                                                    <a href="#arriba">Ir Arriba</a>
                                                                     
                                                                     
 								</div>
@@ -534,7 +536,7 @@ Te pedimos contestar de la manera más honesta y sincera posible ya que no exist
 
                                                             
                                                             
-                                                            
+                                                            <a href="#arriba">Ir Arriba</a>
                                                             
 							</div>
                                                     <div class="tab-pane fade" id="tab4">
@@ -670,7 +672,7 @@ Te pedimos contestar de la manera más honesta y sincera posible ya que no exist
 				<label for="5">Totalmente de acuerdo</label>
 			
 		</fieldset>
-                                                        
+                                                        <a href="#arriba">Ir Arriba</a>
                                                         
 							</div>
                                                     <div class="tab-pane fade" id="tab5">
@@ -810,7 +812,7 @@ Te pedimos contestar de la manera más honesta y sincera posible ya que no exist
                                                         
                                                         
                                                         
-                                                        
+                                                        <a href="#arriba">Ir Arriba</a>
 							</div>
                                                     <div class="tab-pane fade" id="tab6">
                                                         

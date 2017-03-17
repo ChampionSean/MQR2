@@ -111,7 +111,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading"><svg class="glyph stroked male user "><use xlink:href="#stroked-male-user"/></svg> Información</div>
 					<div class="panel-body">
-						<form class="form-horizontal" name="clientval" method="POST" action="/HQR/administrador/crearCliente">
+						<form class="form-horizontal" name="clientval" method="POST" action="<c:url value = '/administrador/crearCliente' />">
 							<fieldset>
 								<!-- Name input-->
                                                                 <p>Aqui podras crear una cuenta grupal</p>
