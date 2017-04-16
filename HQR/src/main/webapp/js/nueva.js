@@ -41,8 +41,7 @@ $(function() {
         required: true,
         // Specify that email should be validated
         // by the built-in "email" rule
-        email: true,
-        remote:"/IngeSoft2/checkEmail"
+        email: true
       },
       password: {
         required: true,
@@ -72,8 +71,8 @@ $(function() {
       candidato:"Especifica si es candidato",
       correo:{
           required:"Debes de ingresar un correo",
-          email:"Debes de ingresar un correo valido",
-          remote:"Este correo ya existe, ingresa otro"
+          email:"Debes de ingresar un correo valido"
+          
       },
       password:{
           required: "Debe tener mínimo 5 caracteres",

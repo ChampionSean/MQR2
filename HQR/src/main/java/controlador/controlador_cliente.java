@@ -10,6 +10,7 @@ import MapeoBD.Persona;
 import MapeoBD.Proyecto;
 import MapeoBD.Prueba;
 import MapeoBD.Prueba_Cliente;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -17,6 +18,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import modelo.ClienteDAO;
 import modelo.ProyectoDAO;
@@ -76,7 +78,7 @@ public ModelAndView create_p_Clie(ModelMap model, HttpServletRequest a, Redirect
 
 
 @RequestMapping(value = "/cliente/crear_proyectov", method=RequestMethod.POST)
-public ModelAndView create_p_Cliev(ModelMap model, HttpServletRequest a, RedirectAttributes redirect){
+public ModelAndView create_p_Cliev(ModelMap model, HttpServletRequest a, RedirectAttributes redirect) throws ServletException, IOException, ParseException{
     Proyecto p = new Proyecto();
     p.setNombre_proyecto(a.getParameter("nombrep"));
     
@@ -85,15 +87,11 @@ public ModelAndView create_p_Cliev(ModelMap model, HttpServletRequest a, Redirec
     System.out.println(a.getParameter("fi"));
     String fecha_fin = (a.getParameter("ff"));
     System.out.println(a.getParameter("ff"));
-    SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
-    Date inicio= new Date();
-       Date fin= new Date();
-       try {
-       inicio= formatter.parse(fecha_inicio);
-       fin=formatter.parse(fecha_fin);
-       } catch (ParseException ex) {
-         Logger.getLogger(controlador_proyecto.class.getName()).log(Level.SEVERE, null, ex);
-       }
+   SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+    Date inicio;
+       Date fin;
+      inicio = formatter.parse(fecha_inicio);
+      fin = formatter.parse(fecha_fin);
        
        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
     String currentPrincipalName = authentication.getName();
@@ -114,6 +112,17 @@ public ModelAndView addProof(ModelMap model, HttpServletRequest a, RedirectAttri
     return new ModelAndView("redirect:/cliente/show_cp?id="+proyecto.getId_proyecto());
     
 }
+
+@RequestMapping(value = "/cliente/quitarPrueba", method=RequestMethod.GET)
+public ModelAndView quitProof(ModelMap model, HttpServletRequest a, RedirectAttributes redirect){
+    Proyecto proyecto = proyecto_bd.getProyecto(Long.parseLong(a.getParameter("dd")));
+    System.out.println(a.getParameter("id"));
+    Prueba prueba = prueba_bd.getPrueba(Long.parseLong(a.getParameter("id")));
+    proyecto_bd.quitProof(proyecto, prueba);
+    return new ModelAndView("redirect:/cliente/show_cp?id="+proyecto.getId_proyecto());
+    
+}
+
     @RequestMapping(value = "/cliente/formEmpleado", method=RequestMethod.GET)
 public ModelAndView formEmpleado(ModelMap model, HttpServletRequest a, RedirectAttributes redirect){
     String id = a.getParameter("id");

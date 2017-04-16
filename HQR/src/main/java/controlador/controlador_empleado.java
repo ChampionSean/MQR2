@@ -14,6 +14,7 @@ import MapeoBD.Proyecto;
 import MapeoBD.Prueba;
 import MapeoBD.Prueba_Proyecto;
 import MapeoBD.Usuario;
+import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
@@ -24,6 +25,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import modelo.ClienteDAO;
 import modelo.EmpleadoDAO;
@@ -177,9 +179,9 @@ public ModelAndView listaEmpleados(HttpServletRequest a, ModelMap b){
      
     
     @RequestMapping(value = "/cliente/crearEmpleado", method = RequestMethod.POST)
-    public ModelAndView creaEmpleado(ModelMap model,HttpServletRequest request){
+    public ModelAndView creaEmpleado(ModelMap model,HttpServletRequest request) throws ServletException, IOException, ParseException{
         
-       SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+      SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
        
        
        Usuario u = new Usuario();
@@ -214,14 +216,9 @@ public ModelAndView listaEmpleados(HttpServletRequest a, ModelMap b){
        
        String fecha_nac=request.getParameter("fecha_nacimiento"); 
        
-       Date nacimiento= new Date();
-       
-       try {
+       Date nacimiento;
        nacimiento= formatter.parse(fecha_nac);
-       
-       } catch (ParseException ex) {
-         Logger.getLogger(controlador_empleado.class.getName()).log(Level.SEVERE, null, ex);
-       }
+      
        Empleado e=new Empleado();
        
        e.setDireccion("");

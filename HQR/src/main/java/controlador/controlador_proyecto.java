@@ -132,17 +132,29 @@ public ModelAndView showcp_proyecto(ModelMap model, HttpServletRequest a, Redire
     }
     Cliente e = proyecto.getCliente();
     Set<Prueba_Cliente> pruebas = cliente_bd.daPruebas(e.getPersona_id().getCorreo());
- 
-   
-    
-    
    Set<Prueba_Proyecto> pc = proyecto_bd.damePruebas(Long.parseLong(a.getParameter("id")));
+   
+   Set<Prueba_Cliente> pruebasFaltantes = cliente_bd.daPruebas(e.getPersona_id().getCorreo());
+   pruebasFaltantes.clear();
+    boolean esta = false;
+   for(Prueba_Cliente p:pruebas){
+       for(Prueba_Proyecto k:pc){
+           if(p.getPrueba().getNombre_prueba().equals(k.getPrueba().getNombre_prueba())){
+               esta = true;
+           }
+       }
+       if(!esta){
+       pruebasFaltantes.add(p);
+       }
+       esta = false;
+   }
+   
       Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
       String currentPrincipalName = authentication.getName();
     model.addAttribute("username", currentPrincipalName);
     model.addAttribute("personas", proyecto_bd.dameEmpleados(Long.parseLong(a.getParameter("id"))));
     model.addAttribute("pruebak", pc);
-    model.addAttribute("pruebas", pruebas);
+    model.addAttribute("pruebas", pruebasFaltantes);
     model.addAttribute("cliente",e);
     model.addAttribute("proyecto", proyecto);
   

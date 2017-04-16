@@ -249,6 +249,16 @@
                                                            
                                                              </tr>
                                                           </c:forEach>
+                                                             <c:forEach var="prueba" items="${pruebak}">
+                                                             <tr>
+                                                            <td><a href="<c:url value="/cliente/quitarPrueba?id=${prueba.prueba.id_prueba}&dd=${proyecto.id_proyecto}" />">Eliminar</a></td>
+                                                            <td>${prueba.prueba.nombre_prueba}</td>
+                                                            
+                                                            
+                                                            
+                                                           
+                                                             </tr>
+                                                          </c:forEach>
                                                     
                                                    
 						</table>

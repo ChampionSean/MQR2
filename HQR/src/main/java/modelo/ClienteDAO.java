@@ -91,6 +91,43 @@ public class ClienteDAO implements ClienteDAOint {
      }
     
     
+    public void quitProof(Cliente c, Prueba p){
+         Session session = sessionFactory.openSession();
+        Transaction tx = null;
+        
+        try {
+            tx = session.beginTransaction();
+            c = (Cliente) session.get(Cliente.class, c.getId_cliente());
+            p = (Prueba) session.get(Prueba.class, p.getId_prueba());
+            
+            Query query = session.createQuery("from Prueba_Cliente where prueba_id = :var and cliente_id = :varr");
+            query.setParameter("var",p.getId_prueba());
+            query.setParameter("varr",c.getId_cliente());
+            
+           Prueba_Cliente pc = (Prueba_Cliente) query.uniqueResult();
+           
+            pc.setCliente(c);
+            pc.setPrueba(p);
+            pc.setHabilitado(1);
+            Hibernate.initialize(c.getPrueba_cliente());
+            Hibernate.initialize(p.getPrueba_cliente());
+            c.getPrueba_cliente().remove(pc);
+            p.getPrueba_cliente().remove(pc);
+            session.delete(pc);
+            session.update(c);
+            session.update(p);
+           
+            tx.commit();
+            
+        }catch(Exception e){
+            e.printStackTrace(); 
+        }finally{
+            session.close();
+        }
+          
+     }
+    
+    
     public Cliente porEmpresa(String empresa){
          Session session = sessionFactory.openSession();
         Transaction tx = null;

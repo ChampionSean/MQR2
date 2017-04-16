@@ -173,21 +173,49 @@ public ModelAndView addProof(ModelMap model, HttpServletRequest a, RedirectAttri
     
 }
 
+
+@RequestMapping(value = "/administrador/quitarPrueba", method=RequestMethod.GET)
+public ModelAndView quitProof(ModelMap model, HttpServletRequest a, RedirectAttributes redirect){
+    Cliente cliente = cliente_bd.verCliente(Long.parseLong(a.getParameter("dd")));
+    System.out.println(a.getParameter("id"));
+    Prueba prueba = prueba_bd.getPrueba(Long.parseLong(a.getParameter("id")));
+    cliente_bd.quitProof(cliente, prueba);
+    return new ModelAndView("redirect:/administrador/show_cuenta?id="+cliente.getId_cliente());
+    
+}
+
+
+
 @RequestMapping(value = "/administrador/show_cuenta", method=RequestMethod.GET)
 public ModelAndView mostrarc(ModelMap model, HttpServletRequest a, RedirectAttributes redirect){
     Cliente cliente = cliente_bd.verCliente(Long.parseLong(a.getParameter("id")));
-    LinkedList<Cliente> datos_e = new LinkedList<Cliente>();
+   
     if(cliente.getHabilitado() == 1){
         model.addAttribute("checado", "checked");
     }
     List<Prueba> pruebas = prueba_bd.getPruebas();
-   model.addAttribute("pruebah",pruebas);
+    List<Prueba> pruebasFal = prueba_bd.getPruebas();
+    pruebasFal.clear();
     
    Set<Prueba_Cliente> pc = cliente_bd.daPruebas(cliente.getPersona_id().getCorreo());
+   boolean esta = false;
+   for(Prueba p:pruebas){
+       for(Prueba_Cliente k:pc){
+           if(p.getNombre_prueba().equals(k.getPrueba().getNombre_prueba())){
+               esta = true;
+           }
+       }
+       if(!esta){
+       pruebasFal.add(p);
+       }
+       esta = false;
+   }
+   
+   model.addAttribute("pruebah",pruebasFal);
     model.addAttribute("pruebas",pc);
     model.addAttribute("cliente", cliente);
     
-    model.addAttribute("datos_e", datos_e);
+  
     
     return new ModelAndView("cliente_show", model);
     

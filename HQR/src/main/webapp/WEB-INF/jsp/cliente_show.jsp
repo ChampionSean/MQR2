@@ -252,11 +252,18 @@
                                                     
                                                     <c:forEach var="pruebac" items="${pruebah}">
                                                         <tr>
+                                                           
                                                             <td><a href="<c:url value="/administrador/agregaPrueba?id=${pruebac.id_prueba}&dd=${cliente.id_cliente}" />">Agregar</a></td>
                                                             <td>${pruebac.nombre_prueba}</td>
                                                            
                                                              </tr>
                                                           </c:forEach>
+                                                             
+                                                             <c:forEach var="proof" items="${pruebas}">
+                                                                  <td><a href="<c:url value="/administrador/quitarPrueba?id=${proof.prueba.id_prueba}&dd=${cliente.id_cliente}" />">Eliminar</a></td>
+                                                            <td>${proof.prueba.nombre_prueba}</td>
+                                                                 
+                                                             </c:forEach>
                                                     
                                                    
 						</table>

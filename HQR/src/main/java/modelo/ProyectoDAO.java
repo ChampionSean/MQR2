@@ -95,7 +95,37 @@ public class ProyectoDAO {
           
      }
     
-    
+    public void quitProof(Proyecto c, Prueba p){
+         Session session = sessionFactory.openSession();
+        Transaction tx = null;
+        
+        try {
+            tx = session.beginTransaction();
+            c = (Proyecto) session.get(Proyecto.class, c.getId_proyecto());
+            p = (Prueba) session.get(Prueba.class, p.getId_prueba());
+            
+            
+            Query query = session.createQuery("from Prueba_Proyecto where prueba_id = :var and proyecto_id = :varr");
+            query.setParameter("var",p.getId_prueba());
+            query.setParameter("varr",c.getId_proyecto());
+            Prueba_Proyecto pc = (Prueba_Proyecto) query.uniqueResult();
+            Hibernate.initialize(c.getPrueba_proyecto());
+            Hibernate.initialize(p.getPrueba_proyecto());
+            c.getPrueba_proyecto().remove(pc);
+            p.getPrueba_proyecto().remove(pc);
+            session.delete(pc);
+            session.update(c);
+            session.update(p);
+            
+            tx.commit();
+            
+        }catch(Exception e){
+            e.printStackTrace(); 
+        }finally{
+            session.close();
+        }
+          
+     }
     
     
     /**
